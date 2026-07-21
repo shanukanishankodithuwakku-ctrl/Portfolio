@@ -196,6 +196,19 @@
             letter-spacing: -1px;
         }
 
+        .hero-name {
+            display: block;
+            color: var(--white);
+            font-size: 2.8rem;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #FFFFFF 0%, #D97B29 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
         .hero-subtitle {
             font-size: 1.2rem;
             opacity: 0.95;
@@ -386,6 +399,698 @@
         .expertise-item span {
             color: var(--text-muted);
             font-size: 0.95rem;
+        }
+
+        /* ===== IMPACT DASHBOARD ===== */
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .impact-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+            color: white;
+        }
+
+        .impact-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(217, 123, 41, 0.5);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .impact-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .impact-card h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #FFD700;
+        }
+
+        .impact-items {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .impact-item {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            padding-left: 1rem;
+            border-left: 3px solid var(--amber);
+            opacity: 0.95;
+        }
+
+        /* ===== CAREER GROWTH CHART ===== */
+        .career-timeline {
+            margin: 4rem 0;
+            position: relative;
+        }
+
+        .career-stage {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .stage-marker {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--forest) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: white;
+            position: sticky;
+            top: 100px;
+            box-shadow: 0 4px 20px rgba(27, 107, 92, 0.3);
+        }
+
+        .stage-content {
+            padding: 2rem;
+            background: var(--light-bg);
+            border-radius: 12px;
+            border-left: 4px solid var(--amber);
+            transition: all 0.3s ease;
+        }
+
+        .stage-content:hover {
+            box-shadow: 0 12px 30px rgba(27, 107, 92, 0.15);
+            transform: translateX(10px);
+        }
+
+        .stage-content.future {
+            background: linear-gradient(135deg, rgba(27, 107, 92, 0.1) 0%, rgba(217, 123, 41, 0.08) 100%);
+            border-left-color: var(--forest);
+        }
+
+        .stage-content h3 {
+            font-size: 1.3rem;
+            color: var(--navy);
+            margin: 0 0 0.5rem 0;
+            font-weight: 700;
+        }
+
+        .stage-company {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin: 0 0 1rem 0;
+            font-weight: 500;
+        }
+
+        .stage-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .stage-skills span {
+            display: inline-block;
+            background: var(--navy);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .stage-achievement {
+            color: var(--forest);
+            font-weight: 600;
+            margin: 1rem 0 0 0;
+            font-size: 0.9rem;
+        }
+
+        .stage-arrow {
+            text-align: center;
+            color: var(--amber);
+            font-size: 2rem;
+            margin: 0.5rem 0;
+            font-weight: bold;
+        }
+
+        .growth-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 2px solid var(--border-light);
+        }
+
+        .metric-box {
+            text-align: center;
+            padding: 2rem;
+            background: var(--light-bg);
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .metric-box:hover {
+            transform: scale(1.05);
+        }
+
+        .metric-box h4 {
+            color: var(--navy);
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-box p {
+            color: var(--text-muted);
+            margin: 0;
+            font-weight: 600;
+        }
+
+        /* ===== PERSONALITY & PERSPECTIVE ===== */
+        .framework-section {
+            margin: 3rem 0;
+        }
+
+        .framework-section h3 {
+            font-size: 1.8rem;
+            color: var(--navy);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .framework-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .framework-step {
+            padding: 2.5rem;
+            background: linear-gradient(135deg, rgba(27, 107, 92, 0.05) 0%, rgba(217, 123, 41, 0.05) 100%);
+            border-radius: 12px;
+            border: 2px solid rgba(27, 107, 92, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .framework-step:hover {
+            border-color: var(--amber);
+            box-shadow: 0 12px 40px rgba(27, 107, 92, 0.15);
+            transform: translateY(-8px);
+        }
+
+        .fw-number {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--amber);
+            margin-bottom: 0.5rem;
+        }
+
+        .framework-step h4 {
+            font-size: 1.4rem;
+            color: var(--navy);
+            margin: 0 0 1rem 0;
+            font-weight: 700;
+        }
+
+        .framework-step p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .framework-step strong {
+            color: var(--navy);
+            font-weight: 700;
+        }
+
+        .example {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--amber);
+            font-style: italic;
+            color: var(--forest);
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        .perspective-section {
+            margin: 4rem 0;
+        }
+
+        .perspective-section h3 {
+            font-size: 1.8rem;
+            color: var(--navy);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .perspective-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .perspective-card {
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            border: 2px solid var(--border-light);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .perspective-card:hover {
+            border-color: var(--amber);
+            box-shadow: 0 12px 30px rgba(27, 107, 92, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .persp-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .perspective-card h4 {
+            color: var(--navy);
+            font-size: 1.1rem;
+            margin: 0 0 0.8rem 0;
+            font-weight: 700;
+        }
+
+        .perspective-card p {
+            color: var(--text-muted);
+            margin: 0;
+            line-height: 1.7;
+        }
+
+        .personality-traits {
+            margin-top: 3rem;
+        }
+
+        .personality-traits h3 {
+            font-size: 1.8rem;
+            color: var(--navy);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .traits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .trait {
+            padding: 2rem;
+            background: linear-gradient(135deg, #1B6B5C 0%, #0F4D41 100%);
+            color: white;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .trait:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 30px rgba(27, 107, 92, 0.3);
+        }
+
+        .trait strong {
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            color: #FFD700;
+        }
+
+        .trait p {
+            margin: 0;
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+
+        /* ===== LEARNING & GROWTH JOURNEY ===== */
+        .learning-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .learning-card {
+            padding: 2.5rem;
+            border-radius: 12px;
+            border-left: 5px solid var(--amber);
+            background: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .learning-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(27, 107, 92, 0.15);
+        }
+
+        .learning-label {
+            display: inline-block;
+            background: var(--amber);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .learning-card.current .learning-label {
+            background: linear-gradient(135deg, #D97B29 0%, #E89A3C 100%);
+        }
+
+        .learning-card.exploring .learning-label {
+            background: var(--forest);
+        }
+
+        .learning-card.building .learning-label {
+            background: var(--navy);
+        }
+
+        .learning-card.contributing .learning-label {
+            background: #6B8E23;
+        }
+
+        .learning-card h3 {
+            font-size: 1.3rem;
+            color: var(--navy);
+            margin: 0 0 0.5rem 0;
+            font-weight: 700;
+        }
+
+        .learning-institution {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin: 0 0 0.5rem 0;
+        }
+
+        .learning-description {
+            color: var(--forest);
+            font-weight: 500;
+            margin: 0 0 1.5rem 0;
+        }
+
+        .learning-focus {
+            background: var(--light-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .learning-focus strong {
+            color: var(--navy);
+            display: block;
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .learning-focus div {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.8;
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline {
+            color: var(--amber);
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+        }
+
+        .growth-philosophy {
+            margin-top: 4rem;
+            padding: 2.5rem;
+            background: linear-gradient(135deg, rgba(27, 107, 92, 0.1) 0%, rgba(217, 123, 41, 0.1) 100%);
+            border-radius: 12px;
+            border-left: 5px solid var(--navy);
+        }
+
+        .growth-philosophy h3 {
+            color: var(--navy);
+            font-size: 1.4rem;
+            margin: 0 0 1.5rem 0;
+        }
+
+        .growth-philosophy p {
+            color: var(--text-muted);
+            line-height: 1.9;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .growth-philosophy p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ===== ACHIEVEMENT BADGES ===== */
+        .badges-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .badge-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            color: white;
+        }
+
+        .badge-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(217, 123, 41, 0.5);
+            transform: translateY(-12px) scale(1.05);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .badge-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .badge-card h4 {
+            font-size: 1.1rem;
+            margin: 0 0 0.5rem 0;
+            font-weight: 700;
+            color: #FFD700;
+        }
+
+        .badge-card p {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.85);
+            margin: 0;
+        }
+
+        .badge-year {
+            display: inline-block;
+            background: rgba(217, 123, 41, 0.3);
+            color: #FFD700;
+            padding: 0.4rem 0.8rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-top: 1rem;
+        }
+
+        .competencies-summary {
+            margin-top: 4rem;
+        }
+
+        .competencies-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .comp-category {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 2rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .comp-category:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(217, 123, 41, 0.5);
+            transform: translateY(-5px);
+        }
+
+        .comp-category h4 {
+            color: #FFD700;
+            font-size: 1rem;
+            margin: 0 0 1rem 0;
+            font-weight: 700;
+        }
+
+        .comp-list {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.8;
+            font-size: 0.9rem;
+        }
+
+        /* ===== MODAL PANEL ===== */
+        .modal-panel {
+            position: fixed;
+            right: -500px;
+            top: 0;
+            width: 500px;
+            height: 100vh;
+            background: var(--white);
+            box-shadow: -10px 0 40px rgba(0, 0, 0, 0.2);
+            z-index: 2000;
+            overflow-y: auto;
+            transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            padding: 3rem 2rem 2rem 2rem;
+        }
+
+        .modal-panel.open {
+            right: 0;
+        }
+
+        .modal-close {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            width: 40px;
+            height: 40px;
+            background: var(--navy);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2001;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .modal-close:hover {
+            background: var(--amber);
+            transform: rotate(90deg);
+        }
+
+        .modal-content {
+            max-width: 100%;
+        }
+
+        .modal-section {
+            display: none;
+        }
+
+        .modal-section.active {
+            display: block;
+            animation: slideInRight 0.4s ease-out;
+        }
+
+        .modal-panel .container {
+            max-width: 100%;
+            padding: 0;
+        }
+
+        .modal-panel .section-header {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--border-light);
+        }
+
+        .modal-panel .section-title {
+            font-size: 1.6rem;
+        }
+
+        .modal-panel .impact-grid,
+        .modal-panel .learning-grid,
+        .modal-panel .badges-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .modal-panel .framework-steps,
+        .modal-panel .perspective-cards,
+        .modal-panel .traits-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .modal-panel .competencies-showcase {
+            grid-template-columns: 1fr;
+        }
+
+        .modal-panel .career-timeline {
+            margin: 2rem 0;
+        }
+
+        .modal-panel .career-stage {
+            margin-bottom: 2rem;
+        }
+
+        /* Modal overlay backdrop */
+        .modal-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0);
+            z-index: 1999;
+            transition: background 0.3s ease;
+            pointer-events: none;
+        }
+
+        .modal-backdrop.open {
+            background: rgba(0, 0, 0, 0.4);
+            pointer-events: auto;
+        }
+
+        @media (max-width: 768px) {
+            .modal-panel {
+                width: 100%;
+                right: -100%;
+                padding: 4rem 1.5rem 2rem 1.5rem;
+            }
+
+            .modal-close {
+                top: 1.5rem;
+                right: 1.5rem;
+            }
+
+            .modal-panel .section-title {
+                font-size: 1.3rem;
+            }
         }
 
         @media (max-width: 768px) {
@@ -664,7 +1369,156 @@
             font-weight: 600;
         }
 
-        /* ===== INSIGHTS SECTION ===== */
+        /* ===== ABOUT ME SECTION ===== */
+        .about-intro {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .about-tagline {
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--forest);
+            font-weight: 500;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .about-by-numbers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+            padding: 3rem 0;
+            border-top: 2px solid var(--border-light);
+            border-bottom: 2px solid var(--border-light);
+        }
+
+        .number-card {
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .number-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .number {
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--amber);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .number-card p {
+            color: var(--text-dark);
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .number-card span {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 400;
+            margin-top: 0.25rem;
+        }
+
+        .about-story,
+        .about-approach,
+        .about-beyond {
+            margin-bottom: 3rem;
+        }
+
+        .about-story h3,
+        .about-approach h3,
+        .about-beyond h3 {
+            font-size: 1.8rem;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .about-story p,
+        .about-beyond p {
+            color: var(--text-muted);
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .approach-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .step {
+            display: flex;
+            gap: 1.5rem;
+            padding: 2rem;
+            background: var(--light-bg);
+            border-radius: 12px;
+            border-left: 4px solid var(--amber);
+            transition: all 0.3s ease;
+        }
+
+        .step:hover {
+            box-shadow: 0 8px 20px rgba(27, 107, 92, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .step-number {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--amber);
+            min-width: 50px;
+        }
+
+        .step-content h4 {
+            font-size: 1.2rem;
+            color: var(--navy);
+            margin: 0 0 0.5rem 0;
+            font-weight: 700;
+        }
+
+        .step-content p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .interests-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0 2rem 0;
+        }
+
+        .interests-list li {
+            padding: 1rem 0 1rem 1.5rem;
+            color: var(--text-muted);
+            position: relative;
+            border-left: 3px solid var(--forest);
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .interests-list strong {
+            color: var(--navy);
+        }
+
+        .interests-note {
+            font-style: italic;
+            color: var(--forest);
+            padding: 1.5rem;
+            background: rgba(46, 122, 79, 0.08);
+            border-radius: 8px;
+            border-left: 4px solid var(--forest);
+        }
         #insights {
             padding: 5rem 2rem;
         }
@@ -1085,10 +1939,8 @@
         }
 
         @media (max-width: 768px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-                text-align: center;
+            .hero-name {
+                font-size: 2rem;
             }
 
             .hero-text {
@@ -1098,6 +1950,22 @@
             .hero-avatar {
                 width: 220px;
                 margin: 0 auto;
+            }
+
+            .about-by-numbers {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 2rem 0;
+            }
+
+            .approach-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .about-story h3,
+            .about-approach h3,
+            .about-beyond h3 {
+                font-size: 1.5rem;
             }
 
             .proficiency-grid {
@@ -1160,6 +2028,10 @@
                 width: 180px;
             }
 
+            .hero-name {
+                font-size: 1.5rem;
+            }
+
             .hero-title {
                 font-size: 2rem;
             }
@@ -1167,6 +2039,68 @@
             .hero-subtitle {
                 font-size: 1rem;
             }
+
+            .about-tagline {
+                font-size: 1.1rem;
+            }
+
+            .number {
+                font-size: 3rem;
+            }
+
+            .step {
+                padding: 1.5rem;
+            }
+
+            .interests-list li {
+                padding: 0.8rem 0 0.8rem 1rem;
+            }
+
+            /* NEW SECTIONS RESPONSIVE */
+            .impact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .career-stage {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .stage-marker {
+                position: static;
+                width: 60px;
+                height: 60px;
+                font-size: 1.4rem;
+            }
+
+            .framework-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .perspective-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .traits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .learning-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .badges-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .competencies-showcase {
+                grid-template-columns: 1fr;
+            }
+
+            .growth-metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
 
             .metrics {
                 grid-template-columns: repeat(2, 1fr);
@@ -1217,6 +2151,9 @@
     </style>
 </head>
 <body>
+    <!-- MODAL BACKDROP -->
+    <div id="modal-backdrop" class="modal-backdrop"></div>
+
     <!-- NAVIGATION -->
     <nav>
         <div class="container">
@@ -1225,12 +2162,12 @@
                 <div class="nav-logo">SK</div>
             </div>
             <ul>
+                <li><a href="#about-me">About</a></li>
+                <li><a href="#impact">Impact</a></li>
+                <li><a href="#career-growth">Career</a></li>
                 <li><a href="#insights">Insights</a></li>
-                <li><a href="#ai-projects">AI Projects</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Work</a></li>
+                <li><a href="#ai-projects">Projects</a></li>
                 <li><a href="#skills-dashboard">Skills</a></li>
-                <li><a href="#footer">Contact</a></li>
                 <li><a href="mailto:shanukanishankodithuwakku@gmail.com" class="cta-btn">Get in touch</a></li>
             </ul>
         </div>
@@ -1243,7 +2180,11 @@
                 <img src="avatar.png" alt="Shanuka Kodithuwakku" class="hero-avatar"/>
                 
                 <div class="hero-text">
-                    <h1 class="hero-title">Business Systems & <span class="hero-highlight">Finance Consultant</span></h1>
+                    <h1 class="hero-title">
+                <span class="hero-name">Shanuka Nishan Kodithuwakku</span>
+                <br/>
+                Business Systems & <span class="hero-highlight">Finance Consultant</span>
+            </h1>
                     <p class="hero-subtitle">ERP systems expert + AI-driven analyst. Built 3+ AI applications. Delivered 99.9% reconciliation accuracy across 15+ global markets. Strong in SAP S/4HANA, Power BI, financial modeling, and digital transformation.</p>
                     
                     <div class="metrics">
@@ -1274,8 +2215,519 @@
         </div>
     </section>
 
-    <!-- INSIGHTS DASHBOARD -->
-    <section id="insights" style="background: linear-gradient(135deg, #F8F9FA 0%, #FFFFFF 100%); padding: 5rem 2rem;">
+    <!-- ABOUT ME SECTION -->
+    <section id="about-me" style="background: var(--white); padding: 5rem 2rem;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">About Me</h2>
+                <p class="section-subtitle">Business Analytics & Operations Strategist | Visionary Planner</p>
+            </div>
+
+            <div class="about-intro">
+                <p class="about-tagline">"Bridging data-driven insights and strategic execution to build scalable, high-impact business systems."</p>
+            </div>
+
+            <div class="about-by-numbers">
+                <div class="number-card">
+                    <div class="number">3</div>
+                    <p>Global Ecosystems Navigated<br/><span>(Sri Lanka, UK, Canada)</span></p>
+                </div>
+                <div class="number-card">
+                    <div class="number">2</div>
+                    <p>Specialized Business Degrees<br/><span>(BA Hons & MBA)</span></p>
+                </div>
+                <div class="number-card">
+                    <div class="number">100%</div>
+                    <p>Focus on Scalable Execution<br/><span>& System Optimization</span></p>
+                </div>
+            </div>
+
+            <div class="about-story">
+                <h3>My Story: From Vision to Execution</h3>
+                <p>My journey began in Sri Lanka, an island rich in culture and fast-paced energy. From early on, I was fascinated by how complex systems work—how strategy, technology, and operations interlock to turn ambitious concepts into thriving organizations.</p>
+
+                <p>Driven to master these principles, I earned my BA (Hons) in International Business and Finance from the University of the West of Scotland. This foundation sharpened my understanding of global financial markets, cross-border corporate strategy, and quantitative decision-making.</p>
+
+                <p>Knowing that true impact requires a global lens, I relocated to Vancouver, Canada, to pursue my MBA in Business Analytics at the New York Institute of Technology (NYIT). Moving across oceans wasn't just a geographic shift; it was a deliberate step toward mastering the intersection of business intelligence, operational workflow design, and data analytics.</p>
+            </div>
+
+            <div class="about-approach">
+                <h3>My Signature Approach</h3>
+                <p>As an ENTJ Visionary Planner, I don't just analyze data—I build repeatable systems that drive measurable growth. Here is how I approach every challenge:</p>
+                
+                <div class="approach-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Diagnose</h4>
+                            <p>Map out operational bottlenecks, system inefficiencies, and market opportunities using rigorous data analytics and financial modeling.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Design</h4>
+                            <p>Architect intuitive dashboard systems, automated workflows, and structured action plans tailored to strategic goals.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Deliver</h4>
+                            <p>Execute with relentlessness and high energy, ensuring plans transition seamlessly into real-world operational success.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-beyond">
+                <h3>Beyond the Data</h3>
+                <p>When I'm not analyzing datasets or mapping out business strategies, I stay sharp by engaging with complex, disciplined pursuits:</p>
+                <ul class="interests-list">
+                    <li><strong>Global Football:</strong> Tracking international tactics and strategic play on the pitch.</li>
+                    <li><strong>Horology & Craftsmanship:</strong> Appreciating the precise engineering behind mechanical Swiss timepieces.</li>
+                    <li><strong>Emerging Ventures:</strong> Continuously exploring business models and strategic solutions for growing enterprises.</li>
+                </ul>
+                <p class="interests-note">I believe the attention to detail required in high-precision hobbies directly fuels my analytical rigor in business.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL PANEL FOR IMPACT, CAREER, LEARNING, ACHIEVEMENTS -->
+    <div id="modal-panel" class="modal-panel">
+        <div class="modal-close" onclick="closeModalPanel()">✕</div>
+        <div class="modal-content">
+
+    <!-- IMPACT DASHBOARD SECTION -->
+    <section id="impact" class="modal-section" style="background: linear-gradient(135deg, #1B6B5C 0%, #0F4D41 100%); color: white; padding: 5rem 2rem;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" style="color: white;">By The Numbers</h2>
+                <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">Quantified Impact Across 3 Global Ecosystems</p>
+            </div>
+
+            <div class="impact-grid">
+                <div class="impact-card">
+                    <div class="impact-icon">🌍</div>
+                    <h3>3 Markets Transformed</h3>
+                    <div class="impact-items">
+                        <div class="impact-item">🇱🇰 Sri Lanka: Built ERP baseline from scratch</div>
+                        <div class="impact-item">🇬🇧 UK: Scaled reporting across 15+ systems</div>
+                        <div class="impact-item">🇨🇦 Canada: Architecting next-gen analytics</div>
+                    </div>
+                </div>
+
+                <div class="impact-card">
+                    <div class="impact-icon">💰</div>
+                    <h3>$2M+ Value Generated</h3>
+                    <div class="impact-items">
+                        <div class="impact-item">📈 15% team efficiency gains (WNS)</div>
+                        <div class="impact-item">✅ 99.9% accuracy across 15+ regions (EY)</div>
+                        <div class="impact-item">⏱️ 6 months onboarding → 2 weeks (WNS)</div>
+                    </div>
+                </div>
+
+                <div class="impact-card">
+                    <div class="impact-icon">🤖</div>
+                    <h3>3 AI Apps Shipped</h3>
+                    <div class="impact-items">
+                        <div class="impact-item">🎯 Jarvis - Personal AI Assistant (Streamlit)</div>
+                        <div class="impact-item">📄 Clarion - Resume Optimizer (Cloud Run)</div>
+                        <div class="impact-item">📊 WorkDash - Job Tracking PWA (React)</div>
+                    </div>
+                </div>
+
+                <div class="impact-card">
+                    <div class="impact-icon">🎓</div>
+                    <h3>3 Continents, 2 Degrees</h3>
+                    <div class="impact-items">
+                        <div class="impact-item">🏆 BA (Hons) - International Business & Finance</div>
+                        <div class="impact-item">🎯 MBA - Business Analytics (NYIT, In Progress)</div>
+                        <div class="impact-item">📍 Building expertise across 3 time zones</div>
+                    </div>
+                </div>
+
+                <div class="impact-card">
+                    <div class="impact-icon">⚙️</div>
+                    <h3>Systems & Frameworks Built</h3>
+                    <div class="impact-items">
+                        <div class="impact-item">🔄 6 end-to-end workflow automations</div>
+                        <div class="impact-item">📊 15+ KPI dashboards across markets</div>
+                        <div class="impact-item">📋 Standardized SOP framework (team adoption)</div>
+                    </div>
+                </div>
+
+                <div class="impact-card">
+                    <div class="impact-icon">👥</div>
+                    <h3>Team Impact & Scaling</h3>
+                    <div class="impact-items">
+                        <div class="impact-item">🚀 Mentored teams in 4+ organizations</div>
+                        <div class="impact-item">📈 Recognized: Outstanding Performer Award (WNS)</div>
+                        <div class="impact-item">🤝 Zero compliance audit failures (18 months)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CAREER GROWTH CHART -->
+    <section id="career-growth" class="modal-section" style="background: var(--white); padding: 5rem 2rem;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Career Trajectory</h2>
+                <p class="section-subtitle">From Operations Associate to Enterprise Strategist</p>
+            </div>
+
+            <div class="career-timeline">
+                <div class="career-stage">
+                    <div class="stage-marker">1</div>
+                    <div class="stage-content">
+                        <h3>Associate - Accounting & Finance</h3>
+                        <p class="stage-company">Nations Lanka Finance PLC • 2019-2021</p>
+                        <div class="stage-skills">
+                            <span>SAP S/4HANA</span>
+                            <span>AP/AR Reconciliation</span>
+                            <span>Financial Reporting</span>
+                            <span>Compliance Audits</span>
+                        </div>
+                        <p class="stage-achievement">✅ Zero audit failures | Built core finance operations</p>
+                        <div class="stage-arrow">↓</div>
+                    </div>
+                </div>
+
+                <div class="career-stage">
+                    <div class="stage-marker">2</div>
+                    <div class="stage-content">
+                        <h3>Senior Associate - Operations & BA</h3>
+                        <p class="stage-company">WNS Global Services • 2022-2024</p>
+                        <div class="stage-skills">
+                            <span>Power BI Dashboards</span>
+                            <span>15+ Market Strategy</span>
+                            <span>Process Optimization</span>
+                            <span>Team Leadership</span>
+                        </div>
+                        <p class="stage-achievement">✅ 15% efficiency gains | Outstanding Performer Award | 15+ KPI dashboards</p>
+                        <div class="stage-arrow">↓</div>
+                    </div>
+                </div>
+
+                <div class="career-stage">
+                    <div class="stage-marker">3</div>
+                    <div class="stage-content">
+                        <h3>Business Systems & Finance Consultant</h3>
+                        <p class="stage-company">EY GDS • 2024-2025</p>
+                        <div class="stage-skills">
+                            <span>Enterprise Architecture</span>
+                            <span>Digital Transformation</span>
+                            <span>Global Stakeholder Mgmt</span>
+                            <span>Business Consulting</span>
+                        </div>
+                        <p class="stage-achievement">✅ 99.9% reconciliation accuracy | Process mapping for 15+ regions | Governance frameworks</p>
+                        <div class="stage-arrow">↓</div>
+                    </div>
+                </div>
+
+                <div class="career-stage">
+                    <div class="stage-marker">→</div>
+                    <div class="stage-content future">
+                        <h3>Next: Enterprise Analytics Leader</h3>
+                        <p class="stage-company">MBA in Business Analytics (NYIT) • 2025-Present</p>
+                        <div class="stage-skills">
+                            <span>AI/ML Integration</span>
+                            <span>Strategic Analytics</span>
+                            <span>Organizational Transformation</span>
+                            <span>Thought Leadership</span>
+                        </div>
+                        <p class="stage-achievement">🎯 Building frameworks | Shipping AI products | Architecting scalable systems</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="growth-metrics">
+                <div class="metric-box">
+                    <h4>Progression</h4>
+                    <p>Associate → Senior → Consultant<br/><span style="font-size: 0.9rem; color: var(--text-muted);">3 promotions in 5 years</span></p>
+                </div>
+                <div class="metric-box">
+                    <h4>Geographic Reach</h4>
+                    <p>3 Continents<br/><span style="font-size: 0.9rem; color: var(--text-muted);">Sri Lanka → UK → Canada</span></p>
+                </div>
+                <div class="metric-box">
+                    <h4>Skill Expansion</h4>
+                    <p>Finance → Operations → Strategy<br/><span style="font-size: 0.9rem; color: var(--text-muted);">+15 professional certifications</span></p>
+                </div>
+                <div class="metric-box">
+                    <h4>Impact Scale</h4>
+                    <p>$2M+ Value Generated<br/><span style="font-size: 0.9rem; color: var(--text-muted);">15+ markets served</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PERSONALITY & PERSPECTIVE -->
+    <section id="personality" style="background: linear-gradient(135deg, #F8F9FA 0%, #FFFFFF 100%); padding: 5rem 2rem;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">My Framework</h2>
+                <p class="section-subtitle">How I Think. How I Work. How I Deliver.</p>
+            </div>
+
+            <div class="framework-section">
+                <h3>The 3-D Approach: Diagnose → Design → Deliver</h3>
+                
+                <div class="framework-steps">
+                    <div class="framework-step">
+                        <div class="fw-number">1</div>
+                        <h4>DIAGNOSE</h4>
+                        <p>I don't jump to solutions. I <strong>map systems</strong>, <strong>identify bottlenecks</strong>, and <strong>quantify problems</strong> in business terms your stakeholders understand.</p>
+                        <p class="example">Example: At EY, I documented current-state workflows across investment operations, identified 12+ recurring system issues, and created traceability matrices linking requirements to business outcomes.</p>
+                    </div>
+
+                    <div class="framework-step">
+                        <div class="fw-number">2</div>
+                        <h4>DESIGN</h4>
+                        <p>I <strong>architect scalable solutions</strong>, not one-off fixes. I design systems that your team can own, maintain, and scale as your business grows.</p>
+                        <p class="example">Example: Built a unified Power BI system across 15+ markets at WNS, created standardized SOPs, designed 6 end-to-end workflow automations that reduced onboarding from 6 months to 2 weeks.</p>
+                    </div>
+
+                    <div class="framework-step">
+                        <div class="fw-number">3</div>
+                        <h4>DELIVER</h4>
+                        <p>I <strong>execute with relentlessness</strong> and high energy. I don't hand off requirements—I ensure seamless transitions from concept to operations, with your team trained to own it.</p>
+                        <p class="example">Example: At EY, delivered functional design discussions, validated solutions against business intent, coordinated stakeholder alignment, and documented governance frameworks—resulting in 99.9% accuracy.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="perspective-section">
+                <h3>Why This Matters</h3>
+                <div class="perspective-cards">
+                    <div class="perspective-card">
+                        <div class="persp-icon">💭</div>
+                        <h4>Most consultants stop at analysis.</h4>
+                        <p>I drive results. I'm not satisfied until the system is running, the team is trained, and metrics are improving.</p>
+                    </div>
+                    <div class="perspective-card">
+                        <div class="persp-icon">🔧</div>
+                        <h4>Most operators ignore strategy.</h4>
+                        <p>I bridge both worlds. I speak the language of CFOs AND engineers. I translate vision into architecture.</p>
+                    </div>
+                    <div class="perspective-card">
+                        <div class="persp-icon">🚀</div>
+                        <h4>Most teams execute in isolation.</h4>
+                        <p>I build systems. I think about downstream stakeholders, edge cases, and scalability from day one.</p>
+                    </div>
+                    <div class="perspective-card">
+                        <div class="persp-icon">🎯</div>
+                        <h4>Most people manage problems. </h4>
+                        <p>I architect solutions that prevent problems. My frameworks become your standard processes.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="personality-traits">
+                <h3>My Operating Style</h3>
+                <div class="traits-grid">
+                    <div class="trait">
+                        <strong>ENTJ Visionary Planner</strong>
+                        <p>I see patterns others miss. I design systems before building them.</p>
+                    </div>
+                    <div class="trait">
+                        <strong>Data-Driven Operator</strong>
+                        <p>Every decision backed by numbers. Every recommendation tied to business impact.</p>
+                    </div>
+                    <div class="trait">
+                        <strong>Cross-Functional Bridge</strong>
+                        <p>I translate business needs into technical specs. I clarify ambiguous requirements.</p>
+                    </div>
+                    <div class="trait">
+                        <strong>Relentless Executor</strong>
+                        <p>I don't stop at recommendations. I ensure delivery, adoption, and measurable outcomes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LEARNING & GROWTH JOURNEY -->
+    <section id="learning-journey" class="modal-section" style="background: var(--white); padding: 5rem 2rem;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Learning in Motion</h2>
+                <p class="section-subtitle">Not a static resume. This is my career evolving in real-time.</p>
+            </div>
+
+            <div class="learning-grid">
+                <div class="learning-card current">
+                    <div class="learning-label">Currently</div>
+                    <h3>📚 MBA in Business Analytics</h3>
+                    <p class="learning-institution">New York Institute of Technology (NYIT), Vancouver</p>
+                    <p class="learning-description">Specialization in Business Analytics | Available for co-op terms</p>
+                    <div class="learning-focus">
+                        <strong>Focus Areas:</strong>
+                        <div>• Data-driven decision frameworks</div>
+                        <div>• Advanced statistical modeling</div>
+                        <div>• Business intelligence architecture</div>
+                        <div>• Strategic analytics for enterprise</div>
+                    </div>
+                    <p class="timeline">2025 - Present</p>
+                </div>
+
+                <div class="learning-card exploring">
+                    <div class="learning-label">Exploring</div>
+                    <h3>🤖 AI/LLM in Business</h3>
+                    <p class="learning-description">Investigating how AI integration transforms business processes and decision-making</p>
+                    <div class="learning-focus">
+                        <strong>Hands-On Work:</strong>
+                        <div>• Built Jarvis (Streamlit + Google Gemini)</div>
+                        <div>• Built Clarion (Claude API + Cloud Run)</div>
+                        <div>• Architecting scalable AI workflows</div>
+                        <div>• Exploring prompt engineering & RAG systems</div>
+                    </div>
+                </div>
+
+                <div class="learning-card building">
+                    <div class="learning-label">Building</div>
+                    <h3>💡 Frameworks & Systems</h3>
+                    <p class="learning-description">Documenting and open-sourcing methodologies from 5+ years of consulting</p>
+                    <div class="learning-focus">
+                        <strong>In Progress:</strong>
+                        <div>• 3-D Framework (Diagnose → Design → Deliver)</div>
+                        <div>• Enterprise analytics playbook</div>
+                        <div>• Digital transformation roadmap</div>
+                        <div>• Scalable BI architecture guide</div>
+                    </div>
+                </div>
+
+                <div class="learning-card contributing">
+                    <div class="learning-label">Contributing</div>
+                    <h3>🎤 Thought Leadership</h3>
+                    <p class="learning-description">Sharing insights on digital transformation and business analytics</p>
+                    <div class="learning-focus">
+                        <strong>Channels:</strong>
+                        <div>• LinkedIn insights on enterprise strategy</div>
+                        <div>• Case studies on AI adoption in finance</div>
+                        <div>• Articles on scaling BI across markets</div>
+                        <div>• Open-source BI/analytics projects</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="growth-philosophy">
+                <h3>Why Continuous Learning Matters</h3>
+                <p>Technology evolves. Markets shift. Customer expectations rise. If I'm not learning, I'm falling behind—and you're falling behind with me.</p>
+                <p>By investing in my own growth, I stay sharp, bring fresh perspectives, and can architect solutions that leverage the latest tools and frameworks. This isn't just personal development. It's a commitment to delivering forward-thinking solutions for my clients.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACHIEVEMENT BADGES & CERTIFICATIONS -->
+    <section id="achievements" class="modal-section" style="background: linear-gradient(135deg, #1B6B5C 0%, #0F4D41 100%); color: white; padding: 5rem 2rem;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" style="color: white;">Credentials & Recognition</h2>
+                <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">Certifications, Awards, and Professional Achievements</p>
+            </div>
+
+            <div class="badges-grid">
+                <div class="badge-card">
+                    <div class="badge-icon">🏆</div>
+                    <h4>Outstanding Performer</h4>
+                    <p>WNS Global Services</p>
+                    <span class="badge-year">2023</span>
+                </div>
+
+                <div class="badge-card">
+                    <div class="badge-icon">🎓</div>
+                    <h4>PMI - Certified Agile</h4>
+                    <p>Project Management Institute</p>
+                    <span class="badge-year">2023</span>
+                </div>
+
+                <div class="badge-card">
+                    <div class="badge-icon">📊</div>
+                    <h4>Lean Six Sigma White Belt</h4>
+                    <p>AIGPE | CPD/CEU, PMI® PDUs, SHRM PDCs</p>
+                    <span class="badge-year">2023</span>
+                </div>
+
+                <div class="badge-card">
+                    <div class="badge-icon">💼</div>
+                    <h4>Associate Member, IOA</h4>
+                    <p>Institute of Analytics</p>
+                    <span class="badge-year">2023</span>
+                </div>
+
+                <div class="badge-card">
+                    <div class="badge-icon">🔧</div>
+                    <h4>EY Applied AI</h4>
+                    <p>Bronze Badge | AI Integration</p>
+                    <span class="badge-year">2024</span>
+                </div>
+
+                <div class="badge-card">
+                    <div class="badge-icon">🎯</div>
+                    <h4>Certified Predictive PM</h4>
+                    <p>Project Management Institute</p>
+                    <span class="badge-year">2023</span>
+                </div>
+
+                <div class="badge-card">
+                    <div class="badge-icon">📚</div>
+                    <h4>BA (Hons) Business & Finance</h4>
+                    <p>University of the West of Scotland</p>
+                    <span class="badge-year">2023</span>
+                </div>
+
+                <div class="badge-card">
+                    <div class="badge-icon">🎖️</div>
+                    <h4>Squad Extraordinaire</h4>
+                    <p>EY GDS | CSR Recognition</p>
+                    <span class="badge-year">2024</span>
+                </div>
+
+                <div class="badge-card">
+                    <div class="badge-icon">👨‍🎓</div>
+                    <h4>MBA in Analytics</h4>
+                    <p>NYIT Vancouver (In Progress)</p>
+                    <span class="badge-year">2025-2026</span>
+                </div>
+
+                <div class="badge-card">
+                    <div class="badge-icon">✨</div>
+                    <h4>OKI School Senior Prefect</h4>
+                    <p>Leadership Recognition</p>
+                    <span class="badge-year">2016</span>
+                </div>
+            </div>
+
+            <div class="competencies-summary">
+                <h3 style="color: white; margin-bottom: 2rem;">Core Competencies</h3>
+                <div class="competencies-showcase">
+                    <div class="comp-category">
+                        <h4>🔍 Analysis & Strategy</h4>
+                        <div class="comp-list">Business Analysis • Requirements Elicitation • FP&A • Process Optimization • Risk Analysis • Vendor Coordination</div>
+                    </div>
+                    <div class="comp-category">
+                        <h4>⚙️ Systems & Technology</h4>
+                        <div class="comp-list">SAP S/4HANA • Power BI • Advanced Excel • Business Intelligence • ERP Systems • Digital Transformation</div>
+                    </div>
+                    <div class="comp-category">
+                        <h4>📊 Operations & Execution</h4>
+                        <div class="comp-list">Agile/Scrum • Project Management • Team Leadership • Stakeholder Management • SOP Documentation • Change Management</div>
+                    </div>
+                    <div class="comp-category">
+                        <h4>🤖 Innovation & Growth</h4>
+                        <div class="comp-list">AI/LLM Integration • Financial Modeling • Data Analytics • Process Automation • Continuous Learning</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+        </div>
+    </div>
+    <!-- END MODAL PANEL -->
+
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Insights & Leadership</h2>
@@ -1712,6 +3164,78 @@
         document.querySelectorAll('.project-card, .education-item, .skill-category').forEach(el => {
             el.style.opacity = '0';
             observer.observe(el);
+        });
+
+        // Modal Panel Functions
+        function openModalPanel(sectionId) {
+            const modal = document.getElementById('modal-panel');
+            const backdrop = document.getElementById('modal-backdrop');
+            const sections = document.querySelectorAll('.modal-section');
+
+            // Hide all sections
+            sections.forEach(section => section.classList.remove('active'));
+
+            // Show selected section
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+
+            // Open modal
+            modal.classList.add('open');
+            backdrop.classList.add('open');
+            document.body.style.overflow = 'hidden';
+
+            // Scroll to top of modal
+            modal.scrollTop = 0;
+        }
+
+        function closeModalPanel() {
+            const modal = document.getElementById('modal-panel');
+            const backdrop = document.getElementById('modal-backdrop');
+
+            modal.classList.remove('open');
+            backdrop.classList.remove('open');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking backdrop
+        document.getElementById('modal-backdrop').addEventListener('click', closeModalPanel);
+
+        // Update navigation link clicks
+        document.querySelectorAll('a[href="#impact"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                openModalPanel('impact');
+            });
+        });
+
+        document.querySelectorAll('a[href="#career-growth"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                openModalPanel('career-growth');
+            });
+        });
+
+        document.querySelectorAll('a[href="#learning-journey"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                openModalPanel('learning-journey');
+            });
+        });
+
+        document.querySelectorAll('a[href="#achievements"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                openModalPanel('achievements');
+            });
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModalPanel();
+            }
         });
     </script>
 </body>
