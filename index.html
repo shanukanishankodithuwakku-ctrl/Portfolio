@@ -183,32 +183,104 @@
             align-items: center;
         }
 
-        /* LEFT: Identity card */
-        .hero-identity {
+        /* ===== FLIP CARD ===== */
+        .flip-card {
+            perspective: 1200px;
+            cursor: pointer;
+            width: fit-content;
+            min-width: 280px;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front,
+        .flip-card-back {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
             background: rgba(255,255,255,0.07);
             border: 1px solid rgba(255,255,255,0.12);
             border-radius: 16px;
-            padding: 2rem 2rem;
-            animation: slideInLeft 0.7s ease-out;
-            transition: all 0.3s ease;
-            display: inline-flex;
+            padding: 2rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .flip-card-front {
+            position: relative;
+        }
+
+        .flip-card-back {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform: rotateY(180deg);
+            background: linear-gradient(135deg, rgba(15,77,65,0.95) 0%, rgba(27,107,92,0.9) 100%);
+            border: 1px solid rgba(217,123,41,0.4);
+            border-radius: 16px;
+            padding: 2rem;
+            display: flex;
             flex-direction: column;
             justify-content: center;
-            width: fit-content;
+            gap: 1rem;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
         }
 
-        .hero-identity:hover {
-            background: rgba(255,255,255,0.1);
-            border-color: rgba(217,123,41,0.45);
-            transform: translateY(-4px);
-        }
-
-        .hero-identity-row {
+        .flip-back-quote {
             display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            margin-top: 1rem;
+            flex-direction: column;
+            gap: 1rem;
         }
+
+        .flip-quote-mark {
+            font-size: 4rem;
+            line-height: 0.6;
+            color: #D97B29;
+            font-family: Georgia, serif;
+            font-weight: 900;
+            opacity: 0.8;
+        }
+
+        .flip-quote-text {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #ffffff;
+            line-height: 1.6;
+            font-style: italic;
+            letter-spacing: 0.2px;
+        }
+
+        .flip-quote-author {
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: #D97B29;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding-top: 0.5rem;
+            border-top: 1px solid rgba(217,123,41,0.25);
+        }
+
+        .flip-hint {
+            font-size: 0.65rem;
+            color: rgba(255,255,255,0.3);
+            text-align: right;
+            margin-top: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        /* Keep old identity CSS for fallback but hide it */
+        .hero-identity { display: none; }
 
         .hero-eyebrow {
             font-size: 0.85rem;
@@ -3671,12 +3743,30 @@
         <div class="container">
             <div class="hero-content">
 
-                <!-- LEFT: Identity Card with avatar inside -->
-                <div class="hero-identity">
-                    <div class="hero-eyebrow">Business Systems & Finance Consultant</div>
-                    <div class="hero-identity-row">
-                        <img src="avatar.png" alt="Shanuka" class="hero-avatar"/>
-                        <h1 class="hero-name">Shanuka Nishan<br>Kodithuwakku</h1>
+                <!-- LEFT: Flip Identity Card -->
+                <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+
+                        <!-- FRONT: Name + Avatar -->
+                        <div class="flip-card-front">
+                            <div class="hero-eyebrow">Business Systems & Finance Consultant</div>
+                            <div class="hero-identity-row">
+                                <img src="avatar.png" alt="Shanuka" class="hero-avatar"/>
+                                <h1 class="hero-name">Shanuka Nishan<br>Kodithuwakku</h1>
+                            </div>
+                            <div class="flip-hint">Tap to flip ↩</div>
+                        </div>
+
+                        <!-- BACK: Caption -->
+                        <div class="flip-card-back">
+                            <div class="flip-back-quote">
+                                <div class="flip-quote-mark">"</div>
+                                <p class="flip-quote-text">Never wait for a perfect moment, take the moment and make it perfect.</p>
+                                <div class="flip-quote-author">— Shanuka Nishan Kodithuwakku</div>
+                            </div>
+                            <div class="flip-hint">Tap to flip ↩</div>
+                        </div>
+
                     </div>
                 </div>
 
@@ -4183,6 +4273,70 @@
     </div><!-- END MAIN CONTENT -->
 
         <script>
+        // ===== FLIP CARD — AUTO-FLIP FOR 2 MINUTES =====
+        window.addEventListener('load', () => {
+            const card = document.querySelector('.flip-card');
+            if (!card) return;
+
+            let flipped = false;
+            let intervalId = null;
+            const TWO_MINUTES = 2 * 60 * 1000;
+
+            function doFlip() {
+                flipped = !flipped;
+                card.classList.toggle('flipped', flipped);
+            }
+
+            function startFlipping() {
+                intervalId = setInterval(doFlip, 2500);
+            }
+
+            function stopFlipping() {
+                clearInterval(intervalId);
+                intervalId = null;
+            }
+
+            // Start after 1.5s delay, stop after 2 minutes
+            setTimeout(() => {
+                startFlipping();
+                setTimeout(() => {
+                    stopFlipping();
+                    // Leave on front side when done
+                    card.classList.remove('flipped');
+                    flipped = false;
+                }, TWO_MINUTES);
+            }, 1500);
+
+            // Pause on hover, resume if still within 2 min window
+            let startTime = null;
+            setTimeout(() => { startTime = Date.now(); }, 1500);
+
+            card.addEventListener('mouseenter', () => {
+                if (intervalId) stopFlipping();
+            });
+
+            card.addEventListener('mouseleave', () => {
+                if (startTime && (Date.now() - startTime) < TWO_MINUTES) {
+                    startFlipping();
+                }
+            });
+
+            // Manual toggle on click always works
+            card.addEventListener('click', () => {
+                flipped = !flipped;
+                card.classList.toggle('flipped', flipped);
+            });
+
+            // Pause when tab is hidden
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    stopFlipping();
+                } else if (startTime && (Date.now() - startTime) < TWO_MINUTES) {
+                    startFlipping();
+                }
+            });
+        });
+
         // ===== GENERIC SPA PAGE SYSTEM =====
         function showSpaPage(pageId) {
             const page = document.getElementById(pageId);
