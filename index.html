@@ -37,7 +37,7 @@
         }
 
         /* ===== NAVIGATION ===== */
-        nav {
+        #main-content > nav {
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -46,20 +46,38 @@
             border-bottom: 1px solid var(--border-light);
         }
 
-        nav .container {
+        #main-content > nav .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 1.5rem 2rem;
+            padding: 0.8rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .nav-logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--navy);
-            letter-spacing: -0.5px;
+        .nav-logo-img {
+            height: 48px;
+            width: auto;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-logo-img:hover {
+            transform: scale(1.05);
+        }
+
+        .footer-logo {
+            height: 48px;
+            width: auto;
+            object-fit: contain;
+            margin-top: 1rem;
+            opacity: 0.7;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .footer-logo:hover {
+            opacity: 1;
+            transform: scale(1.08);
         }
 
         nav ul {
@@ -144,121 +162,152 @@
             display: none;
         }
 
-        /* ===== HERO SECTION ===== */
+        /* ===== HERO ===== */
         .hero {
-            background: linear-gradient(135deg, var(--navy) 0%, #0F4D41 100%);
+            background: linear-gradient(135deg, #1B6B5C 0%, #0F4D41 100%);
             color: white;
-            padding: 4rem 2rem;
-            text-align: center;
+            padding: 5rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
         }
 
         .hero .container {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
         }
 
         .hero-content {
             display: grid;
-            grid-template-columns: 280px 1fr;
+            grid-template-columns: auto 1fr;
             gap: 3rem;
             align-items: center;
-            max-width: 1100px;
-            margin: 0 auto;
         }
 
-        .hero-avatar {
-            width: 280px;
-            height: auto;
-            border-radius: 20px;
-            filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.25));
-            animation: slideInLeft 0.8s ease-out;
-            background: transparent;
-            border: none;
-            transition: transform 0.3s ease, filter 0.3s ease;
-            cursor: pointer;
+        /* LEFT: Identity card */
+        .hero-identity {
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 16px;
+            padding: 2rem 2rem;
+            animation: slideInLeft 0.7s ease-out;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            flex-direction: column;
+            justify-content: center;
+            width: fit-content;
         }
 
-        .hero-avatar:hover {
-            transform: scale(1.05) translateY(-5px);
-            filter: drop-shadow(0 20px 45px rgba(0, 0, 0, 0.35));
+        .hero-identity:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(217,123,41,0.45);
+            transform: translateY(-4px);
         }
 
-        .hero-text {
-            text-align: left;
-            animation: slideInRight 0.8s ease-out;
+        .hero-identity-row {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
         }
 
-        .hero-title {
-            font-size: 3.5rem;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-            letter-spacing: -1px;
+        .hero-eyebrow {
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: #D97B29;
+            text-transform: uppercase;
+            margin-bottom: 0.8rem;
         }
 
         .hero-name {
-            display: block;
-            color: var(--white);
-            font-size: 2.8rem;
+            font-size: 2.4rem;
             font-weight: 900;
-            letter-spacing: 0.5px;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(135deg, #FFFFFF 0%, #D97B29 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #ffffff;
+            line-height: 1.15;
+            margin: 0;
+        }
+
+        .hero-divider {
+            width: 36px;
+            height: 3px;
+            background: #D97B29;
+            border-radius: 2px;
+            margin: 1rem 0;
+        }
+
+        .hero-role {
+            font-size: 1.05rem;
+            color: rgba(255,255,255,0.65);
+            font-weight: 500;
+            margin: 0;
+            letter-spacing: 0.3px;
+        }
+
+        /* CENTER: Avatar — now inside identity card */
+        .hero-avatar {
+            width: 120px;
+            height: auto;
+            border-radius: 12px;
+            filter: drop-shadow(0 8px 20px rgba(0,0,0,0.3));
+            animation: slideInLeft 0.8s ease-out;
+            display: block;
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .hero-avatar:hover {
+            transform: scale(1.05) translateY(-3px);
+        }
+
+        /* RIGHT: Description + metrics + CTAs */
+        .hero-text {
+            text-align: left;
+            animation: slideInRight 0.7s ease-out;
         }
 
         .hero-subtitle {
-            font-size: 1.2rem;
-            opacity: 0.95;
-            margin-bottom: 3rem;
-            line-height: 1.8;
+            font-size: 0.98rem;
+            color: rgba(255,255,255,0.8);
+            margin: 0 0 1.8rem 0;
+            line-height: 1.85;
         }
 
-        .hero-highlight {
-            color: var(--amber);
-        }
+        .hero-highlight { color: var(--amber); }
 
         .metrics {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-            padding: 2rem 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem 2rem;
+            margin: 0 0 2rem 0;
+            padding: 1.6rem 0;
+            border-top: 1px solid rgba(255,255,255,0.12);
+            border-bottom: 1px solid rgba(255,255,255,0.12);
         }
 
         .metric {
-            animation: fadeInUp 0.6s ease-out forwards;
-            opacity: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
         }
 
-        .metric:nth-child(1) { animation-delay: 0.1s; }
-        .metric:nth-child(2) { animation-delay: 0.2s; }
-        .metric:nth-child(3) { animation-delay: 0.3s; }
-        .metric:nth-child(4) { animation-delay: 0.4s; }
-
         .metric-number {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--amber);
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #D97B29;
+            line-height: 1;
             display: block;
-            margin-bottom: 0.5rem;
         }
 
         .metric-label {
-            font-size: 0.95rem;
-            opacity: 0.9;
+            font-size: 0.72rem;
+            color: rgba(255,255,255,0.5);
             font-weight: 500;
+            letter-spacing: 0.2px;
         }
 
         .hero-ctas {
             display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            margin-top: 1.5rem;
+            gap: 1rem;
             flex-wrap: wrap;
         }
 
@@ -960,6 +1009,976 @@
             color: rgba(255, 255, 255, 0.9);
             line-height: 1.8;
             font-size: 0.9rem;
+        }
+
+        /* ===== SPA PAGE SYSTEM ===== */
+        .spa-page {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: #F8F9FA;
+            z-index: 5000;
+            overflow-y: auto;
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+
+        .spa-page.active {
+            display: block;
+        }
+
+        .spa-page.visible {
+            opacity: 1;
+        }
+
+        /* SPA NAV */
+        .spa-nav {
+            position: sticky;
+            top: 0;
+            background: rgba(255,255,255,0.97);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-light);
+            z-index: 100;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+
+        .spa-nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .spa-back-btn {
+            background: none;
+            border: 2px solid var(--navy);
+            color: var(--navy);
+            padding: 0.6rem 1.4rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .spa-back-btn:hover {
+            background: var(--navy);
+            color: white;
+            transform: translateX(-4px);
+        }
+
+        /* SPA CONTENT */
+        .spa-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+        }
+
+        /* ABOUT HERO */
+        .about-spa-hero {
+            background: linear-gradient(135deg, #1B6B5C 0%, #0F4D41 100%);
+            margin: 0 -2rem;
+            padding: 5rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-spa-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(217,123,41,0.1) 0%, transparent 60%);
+            animation: heroGlow 6s ease-in-out infinite;
+        }
+
+        @keyframes heroGlow {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(10%, 10%); }
+        }
+
+        .about-spa-hero-inner {
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-spa-name {
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #FFFFFF 0%, #D97B29 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 0 0 0.8rem 0;
+            letter-spacing: -1px;
+        }
+
+        .about-spa-role {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin: 0 0 2rem 0;
+        }
+
+        .about-spa-quote {
+            max-width: 640px;
+            margin: 0 auto;
+            border-left: 4px solid var(--amber);
+            padding: 1rem 1.5rem;
+            text-align: left;
+            font-style: italic;
+            color: rgba(255,255,255,0.95);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            background: rgba(255,255,255,0.07);
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* BY THE NUMBERS */
+        .about-spa-numbers {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            background: white;
+            border-radius: 0 0 16px 16px;
+            margin: 0 0 3rem 0;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+
+        .about-spa-num-card {
+            text-align: center;
+            padding: 2.5rem 1.5rem;
+            border-right: 1px solid #F0F0F0;
+            transition: background 0.3s ease;
+        }
+
+        .about-spa-num-card:last-child {
+            border-right: none;
+        }
+
+        .about-spa-num-card:hover {
+            background: #FAFAFA;
+        }
+
+        .spa-num {
+            display: block;
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--amber);
+            margin-bottom: 0.5rem;
+        }
+
+        .about-spa-num-card p {
+            color: var(--text-dark);
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin: 0 0 0.3rem 0;
+        }
+
+        .about-spa-num-card small {
+            color: var(--text-muted);
+            font-size: 0.82rem;
+        }
+
+        /* BODY SECTIONS */
+        .about-spa-body {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        .about-spa-section {
+            background: white;
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+
+        .about-spa-section h2 {
+            font-size: 1.5rem;
+            color: var(--navy);
+            font-weight: 800;
+            margin: 0 0 1.5rem 0;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--amber);
+        }
+
+        .about-spa-section p {
+            color: var(--text-muted);
+            line-height: 1.9;
+            margin-bottom: 1rem;
+            font-size: 0.98rem;
+        }
+
+        .about-spa-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* STEPS */
+        .about-spa-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+        }
+
+        .spa-step {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+            padding: 1.5rem;
+            background: #F8F9FA;
+            border-radius: 12px;
+            border-left: 4px solid var(--amber);
+            transition: all 0.3s ease;
+        }
+
+        .spa-step:hover {
+            transform: translateX(6px);
+            box-shadow: 0 4px 15px rgba(27,107,92,0.1);
+        }
+
+        .spa-step-num {
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--forest) 100%);
+            color: white;
+            font-weight: 900;
+            font-size: 1.1rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .spa-step-body h4 {
+            color: var(--navy);
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin: 0 0 0.5rem 0;
+        }
+
+        .spa-step-body p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* INTERESTS */
+        .about-spa-interests {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .spa-interest {
+            display: flex;
+            gap: 1.2rem;
+            align-items: flex-start;
+            padding: 1.2rem 1.5rem;
+            background: #F8F9FA;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .spa-interest:hover {
+            background: #F0F4F3;
+        }
+
+        .spa-interest span {
+            font-size: 1.8rem;
+            min-width: 40px;
+        }
+
+        .spa-interest strong {
+            display: block;
+            color: var(--navy);
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .spa-interest p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin: 0 !important;
+        }
+
+        .about-spa-note {
+            font-style: italic;
+            color: var(--forest) !important;
+            background: rgba(46,122,79,0.08) !important;
+            padding: 1rem 1.5rem !important;
+            border-radius: 8px;
+            border-left: 4px solid var(--forest);
+            margin-top: 1rem !important;
+        }
+
+        /* REACH OUT */
+        .about-spa-reach {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .spa-reach-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 1.5rem 1rem;
+            background: #F8F9FA;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .spa-reach-item:hover {
+            border-color: var(--amber);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(27,107,92,0.12);
+        }
+
+        .spa-reach-item span {
+            font-size: 2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .spa-reach-item strong {
+            display: block;
+            color: var(--navy);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .spa-reach-item p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin: 0 !important;
+            line-height: 1.5;
+        }
+
+        /* CTA FOOTER */
+        .about-spa-ctas {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .spa-cta {
+            flex: 1;
+            min-width: 180px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            padding: 1.1rem 1.8rem;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .spa-cta.linkedin {
+            background: #0A66C2;
+            color: white;
+        }
+
+        .spa-cta.linkedin:hover {
+            background: #084e96;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(10,102,194,0.35);
+        }
+
+        .spa-cta.email {
+            background: var(--navy);
+            color: white;
+        }
+
+        .spa-cta.email:hover {
+            background: var(--forest);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(27,107,92,0.35);
+        }
+
+        .spa-cta.resume {
+            background: var(--amber);
+            color: white;
+        }
+
+        .spa-cta.resume:hover {
+            background: #c06b20;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(217,123,41,0.35);
+        }
+
+        @media (max-width: 640px) {
+            .about-spa-name { font-size: 2rem; }
+            .about-spa-hero { padding: 3rem 1.5rem 3rem; }
+            .about-spa-numbers { grid-template-columns: 1fr; }
+            .about-spa-num-card { border-right: none; border-bottom: 1px solid #F0F0F0; }
+            .about-spa-reach { grid-template-columns: 1fr; }
+            .about-spa-ctas { flex-direction: column; }
+            .spa-cta { min-width: unset; width: 100%; }
+            .about-spa-section { padding: 1.8rem 1.5rem; }
+            .spa-nav-inner { padding: 1rem 1.2rem; }
+        }
+
+        /* ===== IMPACT SPA PAGE ===== */
+        .impact-spa-hero {
+            background: linear-gradient(135deg, #1B6B5C 0%, #0F4D41 100%);
+            margin: 0 -2rem;
+            padding: 5rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .impact-spa-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 70% 50%, rgba(217,123,41,0.15) 0%, transparent 60%);
+        }
+
+        .impact-spa-hero-inner { position: relative; z-index: 1; }
+
+        .impact-spa-eyebrow {
+            display: inline-block;
+            background: rgba(217,123,41,0.25);
+            color: #FFD700;
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 1.2rem;
+        }
+
+        .impact-spa-title {
+            font-size: 3rem;
+            font-weight: 900;
+            color: white;
+            margin: 0 0 1rem 0;
+            letter-spacing: -1px;
+        }
+
+        .impact-spa-subtitle {
+            color: rgba(255,255,255,0.85);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* TOP STATS */
+        .impact-top-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            background: white;
+            margin: 0 0 3rem 0;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            border-radius: 0 0 16px 16px;
+            overflow: hidden;
+        }
+
+        .impact-stat-card {
+            padding: 2rem 1.5rem;
+            text-align: center;
+            border-right: 1px solid #F0F0F0;
+            transition: all 0.3s ease;
+        }
+
+        .impact-stat-card:last-child { border-right: none; }
+        .impact-stat-card:hover { transform: translateY(-4px); }
+
+        .impact-stat-card.gold { border-top: 4px solid #FFD700; }
+        .impact-stat-card.green { border-top: 4px solid #1B6B5C; }
+        .impact-stat-card.navy { border-top: 4px solid #0F4D41; }
+        .impact-stat-card.amber { border-top: 4px solid #D97B29; }
+
+        .ist-number {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--navy);
+            margin-bottom: 0.4rem;
+        }
+
+        .ist-label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .ist-context {
+            display: block;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        /* IMPACT CARDS GRID */
+        .impact-spa-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .impact-spa-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+            border-top: 4px solid var(--amber);
+            transition: all 0.3s ease;
+        }
+
+        .impact-spa-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+        }
+
+        .impact-spa-card.wide {
+            grid-column: 1 / -1;
+            border-top-color: var(--navy);
+        }
+
+        .isc-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .impact-spa-card h3 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--navy);
+            margin: 0 0 0.8rem 0;
+        }
+
+        .isc-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #F0F0F0;
+        }
+
+        .isc-items {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .isc-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .isc-flag, .isc-bullet {
+            font-size: 1.3rem;
+            min-width: 30px;
+            margin-top: 2px;
+        }
+
+        .isc-item strong {
+            display: block;
+            color: var(--navy);
+            font-size: 0.95rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .isc-item p {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* CREDENTIALS GRID */
+        .impact-creds-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .impact-cred {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            padding: 1.2rem;
+            background: #F8F9FA;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .impact-cred:hover {
+            background: #EEF4F2;
+            transform: translateX(4px);
+        }
+
+        .impact-cred span { font-size: 1.5rem; min-width: 30px; }
+        .impact-cred strong { display: block; color: var(--navy); font-size: 0.9rem; margin-bottom: 0.2rem; }
+        .impact-cred p { color: var(--text-muted); font-size: 0.82rem; margin: 0; }
+
+        /* BOTTOM CTA */
+        .spa-bottom-cta {
+            background: linear-gradient(135deg, #1B6B5C 0%, #0F4D41 100%);
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .spa-bottom-cta p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.1rem;
+            margin: 0 0 2rem 0;
+            font-weight: 500;
+        }
+
+        .spa-bottom-btns {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ===== CAREER SPA PAGE ===== */
+        .career-spa-hero {
+            background: linear-gradient(135deg, #0F4D41 0%, #1B6B5C 50%, #2E7A4F 100%);
+            margin: 0 -2rem;
+            padding: 5rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .career-spa-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(217,123,41,0.12) 0%, transparent 60%);
+        }
+
+        .career-spa-hero-inner { position: relative; z-index: 1; }
+
+        .career-spa-eyebrow {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            color: #FFD700;
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 1.2rem;
+        }
+
+        .career-spa-title {
+            font-size: 3rem;
+            font-weight: 900;
+            color: white;
+            margin: 0 0 1rem 0;
+            letter-spacing: -1px;
+        }
+
+        .career-spa-subtitle {
+            color: rgba(255,255,255,0.85);
+            font-size: 1.05rem;
+            max-width: 620px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.7;
+        }
+
+        .career-hero-stats {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 1.5rem 2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .chs-item { text-align: center; flex: 1; }
+        .chs-item span { display: block; font-size: 2rem; font-weight: 900; color: #FFD700; margin-bottom: 0.3rem; }
+        .chs-item p { color: rgba(255,255,255,0.85); font-size: 0.8rem; margin: 0; font-weight: 600; }
+        .chs-divider { width: 1px; height: 50px; background: rgba(255,255,255,0.2); margin: 0 1rem; }
+
+        /* CAREER TIMELINE */
+        .career-spa-timeline {
+            margin: 3rem 0;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .cst-item {
+            display: grid;
+            grid-template-columns: 60px 1fr;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .cst-line-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .cst-dot {
+            width: 52px;
+            height: 52px;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--forest) 100%);
+            color: white;
+            font-weight: 900;
+            font-size: 1.2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(27,107,92,0.35);
+            flex-shrink: 0;
+            z-index: 1;
+        }
+
+        .future-dot {
+            background: linear-gradient(135deg, var(--amber) 0%, #E89A3C 100%);
+            box-shadow: 0 4px 15px rgba(217,123,41,0.35);
+        }
+
+        .cst-line {
+            width: 2px;
+            flex: 1;
+            background: linear-gradient(to bottom, var(--navy), rgba(27,107,92,0.2));
+            margin-top: 8px;
+            min-height: 30px;
+        }
+
+        .cst-content {
+            background: white;
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+            border-left: 4px solid var(--amber);
+            transition: all 0.3s ease;
+            margin-bottom: 0.5rem;
+        }
+
+        .cst-content:hover {
+            transform: translateX(8px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+        }
+
+        .future-content {
+            border-left-color: var(--amber);
+            background: linear-gradient(135deg, rgba(217,123,41,0.04) 0%, rgba(27,107,92,0.04) 100%);
+        }
+
+        .cst-badge {
+            display: inline-block;
+            background: var(--navy);
+            color: white;
+            padding: 0.35rem 1rem;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .future-badge {
+            background: linear-gradient(135deg, var(--amber) 0%, #E89A3C 100%);
+        }
+
+        .cst-content h3 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--navy);
+            margin: 0 0 0.4rem 0;
+        }
+
+        .cst-company {
+            color: var(--forest);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin: 0 0 1rem 0;
+        }
+
+        .cst-summary {
+            color: var(--text-muted);
+            line-height: 1.8;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #F0F0F0;
+        }
+
+        .cst-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cst-skills span {
+            background: #EEF4F2;
+            color: var(--navy);
+            padding: 0.35rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .cst-highlights {
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cst-hl {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            padding-left: 0.5rem;
+        }
+
+        /* IMPACT BAR */
+        .cst-impact-bar {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #F0F0F0;
+        }
+
+        .cib-label {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.6rem;
+        }
+
+        .cib-bar {
+            height: 8px;
+            background: #F0F0F0;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+
+        .cib-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--navy) 0%, var(--amber) 100%);
+            border-radius: 4px;
+            transition: width 1s ease;
+        }
+
+        .cst-impact-bar span {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        /* GROWTH PATTERN */
+        .career-growth-section {
+            margin: 2rem 0 3rem;
+        }
+
+        .career-growth-section h2 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .growth-pattern-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .gp-card {
+            background: white;
+            border-radius: 14px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            border-bottom: 3px solid var(--amber);
+            transition: all 0.3s ease;
+        }
+
+        .gp-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+        }
+
+        .gp-icon { font-size: 2rem; margin-bottom: 0.8rem; }
+
+        .gp-card h4 {
+            font-size: 1rem;
+            font-weight: 800;
+            color: var(--navy);
+            margin: 0 0 0.8rem 0;
+        }
+
+        .gp-path {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--forest);
+            margin-bottom: 0.8rem;
+            padding: 0.6rem 1rem;
+            background: #EEF4F2;
+            border-radius: 8px;
+        }
+
+        .gp-path span { color: var(--amber); margin: 0 0.3rem; }
+
+        .gp-card p {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .impact-top-stats { grid-template-columns: repeat(2, 1fr); }
+            .impact-spa-grid { grid-template-columns: 1fr; }
+            .impact-spa-card.wide { grid-column: 1; }
+            .impact-creds-grid { grid-template-columns: 1fr; }
+            .career-spa-timeline { padding-left: 0; }
+            .cst-item { grid-template-columns: 40px 1fr; gap: 1rem; }
+            .cst-dot { width: 40px; height: 40px; font-size: 1rem; }
+            .career-hero-stats { gap: 0; }
+            .chs-divider { margin: 0 0.5rem; }
+            .growth-pattern-grid { grid-template-columns: 1fr; }
+            .impact-spa-title, .career-spa-title { font-size: 2rem; }
+        }
+
+        @media (max-width: 640px) {
+            .impact-top-stats { grid-template-columns: 1fr 1fr; }
+            .career-hero-stats { flex-wrap: wrap; gap: 1rem; }
+            .chs-divider { display: none; }
+            .cst-content { padding: 1.5rem; }
         }
 
         /* ===== MODAL PANEL ===== */
@@ -1939,17 +2958,38 @@
         }
 
         @media (max-width: 768px) {
-            .hero-name {
-                font-size: 2rem;
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .hero-identity {
+                width: 100%;
+            }
+
+            .hero-identity-row {
+                justify-content: center;
+            }
+
+            .hero-avatar {
+                width: 90px;
             }
 
             .hero-text {
                 text-align: center;
             }
 
-            .hero-avatar {
-                width: 220px;
-                margin: 0 auto;
+            .hero-name {
+                font-size: 1.6rem;
+            }
+
+            .hero-ctas {
+                justify-content: center;
+            }
+
+            .metrics {
+                grid-template-columns: repeat(2, 1fr);
             }
 
             .about-by-numbers {
@@ -2022,22 +3062,33 @@
 
             .hero-content {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
+                text-align: center;
+            }
+
+            .hero-identity {
+                text-align: left;
             }
 
             .hero-avatar {
-                width: 180px;
+                width: 160px;
+                margin: 0 auto;
+            }
+
+            .hero-text {
+                text-align: center;
             }
 
             .hero-name {
-                font-size: 1.5rem;
+                font-size: 1.4rem;
             }
 
-            .hero-title {
-                font-size: 2rem;
+            .hero-ctas {
+                justify-content: center;
             }
 
             .hero-subtitle {
-                font-size: 1rem;
+                font-size: 0.95rem;
             }
 
             .about-tagline {
@@ -2151,42 +3202,488 @@
     </style>
 </head>
 <body>
-    <!-- MODAL BACKDROP -->
-    <div id="modal-backdrop" class="modal-backdrop"></div>
 
-    <!-- NAVIGATION -->
+    <!-- ABOUT PAGE SPA -->
+    <!-- ABOUT PAGE (FULL SPA VIEW) -->
+    <div id="about-page" class="spa-page">
+        <nav class="spa-nav">
+            <div class="spa-nav-inner">
+                <div class="nav-brand">
+                    <img src="logo.png" alt="SK Logo" class="nav-logo-img"/>
+                </div>
+                <button class="spa-back-btn" onclick="showMainPage()">← Back to Portfolio</button>
+            </div>
+        </nav>
+
+        <div class="spa-content">
+            <!-- ABOUT HERO -->
+            <div class="about-spa-hero">
+                <div class="about-spa-hero-inner">
+                    <h1 class="about-spa-name">Shanuka Nishan Kodithuwakku</h1>
+                    <p class="about-spa-role">Business Analytics & Operations Strategist | Visionary Planner</p>
+                    <blockquote class="about-spa-quote">Bridging data-driven insights and strategic execution to build scalable, high-impact business systems.</blockquote>
+                </div>
+            </div>
+
+            <!-- BY THE NUMBERS -->
+            <div class="about-spa-numbers">
+                <div class="about-spa-num-card">
+                    <span class="spa-num">3</span>
+                    <p>Global Ecosystems Navigated</p>
+                    <small>Sri Lanka · UK · Canada</small>
+                </div>
+                <div class="about-spa-num-card">
+                    <span class="spa-num">2</span>
+                    <p>Specialized Business Degrees</p>
+                    <small>BA Hons & MBA</small>
+                </div>
+                <div class="about-spa-num-card">
+                    <span class="spa-num">100%</span>
+                    <p>Focus on Scalable Execution</p>
+                    <small>& System Optimization</small>
+                </div>
+            </div>
+
+            <!-- MAIN CONTENT -->
+            <div class="about-spa-body">
+                <div class="about-spa-section">
+                    <h2>My Story: From Vision to Execution</h2>
+                    <p>My journey began in Sri Lanka, an island rich in culture and fast-paced energy. From early on, I was fascinated by how complex systems work—how strategy, technology, and operations interlock to turn ambitious concepts into thriving organizations.</p>
+                    <p>Driven to master these principles, I earned my BA (Hons) in International Business and Finance from the University of the West of Scotland. This foundation sharpened my understanding of global financial markets, cross-border corporate strategy, and quantitative decision-making.</p>
+                    <p>Knowing that true impact requires a global lens, I relocated to Vancouver, Canada, to pursue my MBA in Business Analytics at the New York Institute of Technology (NYIT). Moving across oceans wasn't just a geographic shift; it was a deliberate step toward mastering the intersection of business intelligence, operational workflow design, and data analytics.</p>
+                </div>
+
+                <div class="about-spa-section">
+                    <h2>My Signature Approach</h2>
+                    <p>As an ENTJ Visionary Planner, I don't just analyze data—I build repeatable systems that drive measurable growth. Here is how I approach every challenge:</p>
+                    <div class="about-spa-steps">
+                        <div class="spa-step">
+                            <div class="spa-step-num">1</div>
+                            <div class="spa-step-body">
+                                <h4>Diagnose</h4>
+                                <p>Map out operational bottlenecks, system inefficiencies, and market opportunities using rigorous data analytics and financial modeling.</p>
+                            </div>
+                        </div>
+                        <div class="spa-step">
+                            <div class="spa-step-num">2</div>
+                            <div class="spa-step-body">
+                                <h4>Design</h4>
+                                <p>Architect intuitive dashboard systems, automated workflows, and structured action plans tailored to strategic goals.</p>
+                            </div>
+                        </div>
+                        <div class="spa-step">
+                            <div class="spa-step-num">3</div>
+                            <div class="spa-step-body">
+                                <h4>Deliver</h4>
+                                <p>Execute with relentlessness and high energy, ensuring plans transition seamlessly into real-world operational success.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-spa-section">
+                    <h2>Beyond the Data</h2>
+                    <p>When I'm not analyzing datasets or mapping out business strategies, I stay sharp by engaging with complex, disciplined pursuits:</p>
+                    <div class="about-spa-interests">
+                        <div class="spa-interest">
+                            <span>⚽</span>
+                            <div>
+                                <strong>Global Football</strong>
+                                <p>Tracking international tactics and strategic play on the pitch.</p>
+                            </div>
+                        </div>
+                        <div class="spa-interest">
+                            <span>⌚</span>
+                            <div>
+                                <strong>Horology & Craftsmanship</strong>
+                                <p>Appreciating the precise engineering behind mechanical Swiss timepieces.</p>
+                            </div>
+                        </div>
+                        <div class="spa-interest">
+                            <span>🚀</span>
+                            <div>
+                                <strong>Emerging Ventures</strong>
+                                <p>Continuously exploring business models and strategic solutions for growing enterprises.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="about-spa-note">I believe the attention to detail required in high-precision hobbies directly fuels my analytical rigor in business.</p>
+                </div>
+
+                <div class="about-spa-section">
+                    <h2>Let's Build Something Extraordinary</h2>
+                    <p>I am always open to discussing new opportunities, strategic collaborations, or emerging business challenges. Reach out if you want to:</p>
+                    <div class="about-spa-reach">
+                        <div class="spa-reach-item">
+                            <span>⚙️</span>
+                            <div><strong>Optimize Operations</strong><p>Build custom dashboard systems or streamline organizational workflows.</p></div>
+                        </div>
+                        <div class="spa-reach-item">
+                            <span>📊</span>
+                            <div><strong>Analyze Growth</strong><p>Leverage data modeling and market analytics for strategic decision-making.</p></div>
+                        </div>
+                        <div class="spa-reach-item">
+                            <span>🤝</span>
+                            <div><strong>Connect</strong><p>Discuss corporate strategy, business analytics, or emerging venture ideas.</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA FOOTER -->
+            <div class="about-spa-ctas">
+                <a href="https://www.linkedin.com/in/shanuka-kodithuwakku/" target="_blank" class="spa-cta linkedin">🔗 Connect on LinkedIn</a>
+                <a href="mailto:shanukanishankodithuwakku@gmail.com" class="spa-cta email">✉️ Send an Email</a>
+                <a href="resume.pdf" download="Shanuka_Kodithuwakku_Resume.pdf" class="spa-cta resume">📄 Download Resume</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- IMPACT PAGE SPA -->
+    <div id="impact-page" class="spa-page">
+        <nav class="spa-nav">
+            <div class="spa-nav-inner">
+                <div class="nav-brand">
+                    <img src="logo.png" alt="SK Logo" class="nav-logo-img"/>
+                </div>
+                <button class="spa-back-btn" onclick="hideSpaPage('impact-page')">← Back to Portfolio</button>
+            </div>
+        </nav>
+        <div class="spa-content">
+
+            <!-- IMPACT HERO -->
+            <div class="impact-spa-hero">
+                <div class="impact-spa-hero-inner">
+                    <div class="impact-spa-eyebrow">📊 Quantified Impact</div>
+                    <h1 class="impact-spa-title">By The Numbers</h1>
+                    <p class="impact-spa-subtitle">5+ years of measurable results across 3 continents, 15+ global markets, and 3 AI products shipped.</p>
+                </div>
+            </div>
+
+            <!-- TOP STATS ROW -->
+            <div class="impact-top-stats">
+                <div class="impact-stat-card gold">
+                    <span class="ist-number">99.9%</span>
+                    <span class="ist-label">Reconciliation Accuracy</span>
+                    <span class="ist-context">Across 15+ global markets at EY</span>
+                </div>
+                <div class="impact-stat-card green">
+                    <span class="ist-number">15%</span>
+                    <span class="ist-label">Team Efficiency Gain</span>
+                    <span class="ist-context">Process redesign at WNS Global</span>
+                </div>
+                <div class="impact-stat-card navy">
+                    <span class="ist-number">$2M+</span>
+                    <span class="ist-label">Value Generated</span>
+                    <span class="ist-context">Across consulting engagements</span>
+                </div>
+                <div class="impact-stat-card amber">
+                    <span class="ist-number">3</span>
+                    <span class="ist-label">AI Apps Shipped</span>
+                    <span class="ist-context">Jarvis · Clarion · WorkDash</span>
+                </div>
+            </div>
+
+            <!-- IMPACT CARDS GRID -->
+            <div class="impact-spa-grid">
+
+                <div class="impact-spa-card">
+                    <div class="isc-icon">🌍</div>
+                    <h3>3 Markets Transformed</h3>
+                    <p class="isc-desc">Built and scaled enterprise systems across three different continents — each with unique regulatory, cultural, and operational contexts.</p>
+                    <div class="isc-items">
+                        <div class="isc-item"><span class="isc-flag">🇱🇰</span><div><strong>Sri Lanka</strong><p>Built ERP finance baseline from scratch at Nations Lanka. Achieved zero compliance audit failures across 18 months.</p></div></div>
+                        <div class="isc-item"><span class="isc-flag">🇬🇧</span><div><strong>United Kingdom</strong><p>Scaled reporting workflows across 15+ markets at WNS. Reengineered 6 end-to-end ERP reporting pipelines.</p></div></div>
+                        <div class="isc-item"><span class="isc-flag">🇨🇦</span><div><strong>Canada</strong><p>Architecting next-gen analytics systems via MBA in Business Analytics at NYIT Vancouver.</p></div></div>
+                    </div>
+                </div>
+
+                <div class="impact-spa-card">
+                    <div class="isc-icon">⚙️</div>
+                    <h3>Systems & Workflows Built</h3>
+                    <p class="isc-desc">Designed and deployed operational systems that didn't just solve today's problems — they scaled with the business.</p>
+                    <div class="isc-items">
+                        <div class="isc-item"><span class="isc-bullet">→</span><div><strong>6 End-to-End Workflow Automations</strong><p>Translated complex ERP-driven processes into step-by-step SOPs, cutting onboarding from 6 months to 2 weeks.</p></div></div>
+                        <div class="isc-item"><span class="isc-bullet">→</span><div><strong>15+ KPI Power BI Dashboards</strong><p>Unified reporting across 15+ markets. Real-time visibility for senior leadership and finance teams.</p></div></div>
+                        <div class="isc-item"><span class="isc-bullet">→</span><div><strong>Standardized SOP Framework</strong><p>Authored functional specs and traceability matrices adopted as standard documentation across delivery teams.</p></div></div>
+                    </div>
+                </div>
+
+                <div class="impact-spa-card">
+                    <div class="isc-icon">🤖</div>
+                    <h3>3 AI Applications Shipped</h3>
+                    <p class="isc-desc">Beyond consulting, I build. Three production AI tools demonstrating hands-on technical execution alongside strategic expertise.</p>
+                    <div class="isc-items">
+                        <div class="isc-item"><span class="isc-bullet">🎯</span><div><strong>Jarvis — Personal AI Assistant</strong><p>Built on Streamlit + Google Gemini. Handles scheduling, research synthesis, and decision support in real time.</p></div></div>
+                        <div class="isc-item"><span class="isc-bullet">📄</span><div><strong>Clarion — ATS Resume Optimizer</strong><p>Claude API + Google Cloud Run. AI-powered resume tailoring tool that improves ATS match rates.</p></div></div>
+                        <div class="isc-item"><span class="isc-bullet">📊</span><div><strong>WorkDash Pro — Job Tracker PWA</strong><p>React + Google Sheets backend. Full-stack progressive web app for managing job applications end-to-end.</p></div></div>
+                    </div>
+                </div>
+
+                <div class="impact-spa-card">
+                    <div class="isc-icon">👥</div>
+                    <h3>Team & Stakeholder Impact</h3>
+                    <p class="isc-desc">Delivered results not just for systems — but for the people who depend on them every day.</p>
+                    <div class="isc-items">
+                        <div class="isc-item"><span class="isc-bullet">🏆</span><div><strong>Outstanding Performer Award — WNS</strong><p>Recognized company-wide for exceptional delivery and cross-functional leadership in 2023.</p></div></div>
+                        <div class="isc-item"><span class="isc-bullet">🎖️</span><div><strong>Squad Extraordinaire — EY GDS</strong><p>Awarded for outstanding team contribution and stakeholder delivery on SAP S/4HANA engagement.</p></div></div>
+                        <div class="isc-item"><span class="isc-bullet">✅</span><div><strong>98%+ On-Time Resolution Rate</strong><p>Managed ERP helpdesk intake for 15+ markets in a Jira-based workflow. Zero escalation failures.</p></div></div>
+                    </div>
+                </div>
+
+                <div class="impact-spa-card wide">
+                    <div class="isc-icon">🎓</div>
+                    <h3>Education & Credentials</h3>
+                    <p class="isc-desc">Two specialized degrees, five certifications, and a membership in the Institute of Analytics — built for both depth and breadth.</p>
+                    <div class="impact-creds-grid">
+                        <div class="impact-cred"><span>🎓</span><div><strong>MBA — Business Analytics</strong><p>NYIT Vancouver · 2025–Present</p></div></div>
+                        <div class="impact-cred"><span>📚</span><div><strong>BA Hons — International Business & Finance</strong><p>University of the West of Scotland · 2023</p></div></div>
+                        <div class="impact-cred"><span>🏅</span><div><strong>Lean Six Sigma White Belt</strong><p>AIGPE™ · CPD/CEU, PMI® PDUs</p></div></div>
+                        <div class="impact-cred"><span>📋</span><div><strong>Certified Agile & Predictive PM</strong><p>Project Management Institute (PMI)</p></div></div>
+                        <div class="impact-cred"><span>🤖</span><div><strong>EY Applied AI — Bronze Badge</strong><p>Ernst & Young · 2024</p></div></div>
+                        <div class="impact-cred"><span>💼</span><div><strong>Associate Member — IOA</strong><p>Institute of Analytics · 2023</p></div></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- BOTTOM CTA -->
+            <div class="spa-bottom-cta">
+                <p>Want to see how this impact translates to your organization?</p>
+                <div class="spa-bottom-btns">
+                    <a href="mailto:shanukanishankodithuwakku@gmail.com" class="spa-cta email">✉️ Let's Talk</a>
+                    <a href="resume.pdf" download="Shanuka_Kodithuwakku_Resume.pdf" class="spa-cta resume">📄 Download Resume</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- CAREER PAGE SPA -->
+    <!-- CAREER SPA PAGE -->
+    <div id="career-page" class="spa-page">
+        <nav class="spa-nav">
+            <div class="spa-nav-inner">
+                <div class="nav-brand">
+                    <img src="logo.png" alt="SK Logo" class="nav-logo-img"/>
+                </div>
+                <button class="spa-back-btn" onclick="hideSpaPage('career-page')">← Back to Portfolio</button>
+            </div>
+        </nav>
+        <div class="spa-content">
+
+            <!-- CAREER HERO -->
+            <div class="career-spa-hero">
+                <div class="career-spa-hero-inner">
+                    <div class="career-spa-eyebrow">📈 Career Trajectory</div>
+                    <h1 class="career-spa-title">From Associate to Consultant</h1>
+                    <p class="career-spa-subtitle">A deliberate, compounding journey across 3 countries, 3 organizations, and 5+ years — building toward enterprise analytics leadership.</p>
+                    <div class="career-hero-stats">
+                        <div class="chs-item"><span>5+</span><p>Years Experience</p></div>
+                        <div class="chs-divider"></div>
+                        <div class="chs-item"><span>3</span><p>Organizations</p></div>
+                        <div class="chs-divider"></div>
+                        <div class="chs-item"><span>3</span><p>Countries</p></div>
+                        <div class="chs-divider"></div>
+                        <div class="chs-item"><span>15+</span><p>Certifications</p></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CAREER TIMELINE -->
+            <div class="career-spa-timeline">
+
+                <!-- FUTURE -->
+                <div class="cst-item future">
+                    <div class="cst-line-wrap">
+                        <div class="cst-dot future-dot">→</div>
+                        <div class="cst-line"></div>
+                    </div>
+                    <div class="cst-content future-content">
+                        <div class="cst-badge future-badge">🎯 Next Chapter</div>
+                        <h3>Enterprise Analytics Leader</h3>
+                        <p class="cst-company">MBA in Business Analytics · NYIT Vancouver · 2025–Present</p>
+                        <p class="cst-summary">Pursuing advanced business analytics while building AI tools, consulting frameworks, and thought leadership content. Available for co-op and full-time BA roles in Vancouver.</p>
+                        <div class="cst-skills">
+                            <span>AI/ML Integration</span><span>Strategic Analytics</span><span>Organizational Transformation</span><span>Thought Leadership</span><span>Data Architecture</span>
+                        </div>
+                        <div class="cst-highlights">
+                            <div class="cst-hl">🚀 Shipping AI products (Jarvis, Clarion, WorkDash)</div>
+                            <div class="cst-hl">📊 Building enterprise analytics frameworks</div>
+                            <div class="cst-hl">🎓 MBA — Business Analytics specialization</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EY -->
+                <div class="cst-item">
+                    <div class="cst-line-wrap">
+                        <div class="cst-dot">3</div>
+                        <div class="cst-line"></div>
+                    </div>
+                    <div class="cst-content">
+                        <div class="cst-badge">Jun 2024 – Aug 2025</div>
+                        <h3>Business Systems & Finance Consultant</h3>
+                        <p class="cst-company">EY GDS · Colombo, Sri Lanka</p>
+                        <p class="cst-summary">Consulted with global EY engagement teams (U.S. & U.K.) on technology strategy, process transformation, and SAP S/4HANA implementation. Acted as the bridge between business stakeholders and technical delivery teams across two continents.</p>
+                        <div class="cst-skills">
+                            <span>SAP S/4HANA</span><span>Business Consulting</span><span>Enterprise Architecture</span><span>Stakeholder Management</span><span>Digital Transformation</span><span>SOP Authoring</span>
+                        </div>
+                        <div class="cst-highlights">
+                            <div class="cst-hl">✅ 99.9% reconciliation accuracy across 15+ global regions</div>
+                            <div class="cst-hl">📋 Authored functional specs, traceability matrices & governance docs</div>
+                            <div class="cst-hl">🔍 Synthesized UK/US stakeholder input into SAP design recommendations</div>
+                            <div class="cst-hl">🎖️ Squad Extraordinaire Certificate — EY recognition award</div>
+                        </div>
+                        <div class="cst-impact-bar">
+                            <div class="cib-label">Scope of Impact</div>
+                            <div class="cib-bar"><div class="cib-fill" style="width:95%"></div></div>
+                            <span>Global · Multi-Market</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- WNS -->
+                <div class="cst-item">
+                    <div class="cst-line-wrap">
+                        <div class="cst-dot">2</div>
+                        <div class="cst-line"></div>
+                    </div>
+                    <div class="cst-content">
+                        <div class="cst-badge">Jun 2022 – May 2024</div>
+                        <h3>Senior Associate — Operations & Business Analytics</h3>
+                        <p class="cst-company">WNS Global Services · Colombo, Sri Lanka</p>
+                        <p class="cst-summary">Owned end-to-end business documentation, ERP reporting standardization, and cross-market requirements management for a global BPO serving UK/EU clients. Built the foundation for scalable operations across 15+ markets.</p>
+                        <div class="cst-skills">
+                            <span>Power BI</span><span>Process Optimization</span><span>Requirements Management</span><span>Jira</span><span>ERP Helpdesk</span><span>SOPs</span><span>Multi-Market Ops</span>
+                        </div>
+                        <div class="cst-highlights">
+                            <div class="cst-hl">🏆 Outstanding Performer of the Year — Company-wide recognition</div>
+                            <div class="cst-hl">📊 Built 15+ Power BI dashboards across market segments</div>
+                            <div class="cst-hl">⏱️ Reduced onboarding time from 6 months → 2 weeks via SOP redesign</div>
+                            <div class="cst-hl">✅ 98%+ on-time resolution rate managing ERP helpdesk for 15+ markets</div>
+                            <div class="cst-hl">🔄 Reengineered 6 end-to-end reporting workflows across ERP operations</div>
+                        </div>
+                        <div class="cst-impact-bar">
+                            <div class="cib-label">Scope of Impact</div>
+                            <div class="cib-bar"><div class="cib-fill" style="width:78%"></div></div>
+                            <span>15+ Markets · UK & EU</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NATIONS LANKA -->
+                <div class="cst-item">
+                    <div class="cst-line-wrap">
+                        <div class="cst-dot">1</div>
+                    </div>
+                    <div class="cst-content">
+                        <div class="cst-badge">Dec 2019 – Aug 2021</div>
+                        <h3>Associate — Accounting & Finance</h3>
+                        <p class="cst-company">Nations Lanka Finance PLC · Colombo, Sri Lanka</p>
+                        <p class="cst-summary">Built the core finance operations foundation: internal compliance audits, AP/AR reconciliation, GL accounting, and SAP S/4HANA financial reporting workflows. Where the analytical mindset began.</p>
+                        <div class="cst-skills">
+                            <span>SAP S/4HANA</span><span>AP/AR Reconciliation</span><span>GL Accounting</span><span>Compliance Audits</span><span>Financial Reporting</span><span>IFRS</span>
+                        </div>
+                        <div class="cst-highlights">
+                            <div class="cst-hl">✅ Zero compliance audit failures across 18 consecutive months</div>
+                            <div class="cst-hl">📋 Documented internal control procedures & financial process controls</div>
+                            <div class="cst-hl">🔍 Identified efficiency gaps across GL, AP/AR, and reporting workflows</div>
+                        </div>
+                        <div class="cst-impact-bar">
+                            <div class="cib-label">Scope of Impact</div>
+                            <div class="cib-bar"><div class="cib-fill" style="width:45%"></div></div>
+                            <span>National · Sri Lanka</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- GROWTH TRAJECTORY -->
+            <div class="career-growth-section">
+                <h2>The Growth Pattern</h2>
+                <div class="growth-pattern-grid">
+                    <div class="gp-card">
+                        <div class="gp-icon">📍</div>
+                        <h4>Geographic Expansion</h4>
+                        <div class="gp-path">Sri Lanka <span>→</span> UK Markets <span>→</span> Canada</div>
+                        <p>Each move expanded my operational context and stakeholder complexity.</p>
+                    </div>
+                    <div class="gp-card">
+                        <div class="gp-icon">📈</div>
+                        <h4>Seniority Progression</h4>
+                        <div class="gp-path">Associate <span>→</span> Senior Associate <span>→</span> Consultant</div>
+                        <p>3 levels of progression in 5 years — each with greater scope, ownership, and impact.</p>
+                    </div>
+                    <div class="gp-card">
+                        <div class="gp-icon">🧠</div>
+                        <h4>Skill Evolution</h4>
+                        <div class="gp-path">Finance Ops <span>→</span> BI & Analytics <span>→</span> Strategy & AI</div>
+                        <p>From financial compliance to enterprise transformation to AI product development.</p>
+                    </div>
+                    <div class="gp-card">
+                        <div class="gp-icon">🎯</div>
+                        <h4>Impact Scale</h4>
+                        <div class="gp-path">Local <span>→</span> Multi-Market <span>→</span> Global</div>
+                        <p>From single-country operations to consulting across US, UK & 15+ global markets.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BOTTOM CTA -->
+            <div class="spa-bottom-cta">
+                <p>Interested in what this trajectory means for your team?</p>
+                <div class="spa-bottom-btns">
+                    <a href="https://www.linkedin.com/in/shanuka-kodithuwakku/" target="_blank" class="spa-cta linkedin">🔗 View LinkedIn</a>
+                    <a href="resume.pdf" download="Shanuka_Kodithuwakku_Resume.pdf" class="spa-cta resume">📄 Download Resume</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- SPA pages use their own overlay system -->
+
+    <!-- MAIN CONTENT -->
+    <div id="main-content">
+
+        <!-- NAVIGATION -->
     <nav>
         <div class="container">
             <div class="nav-brand">
-                <img src="avatar.png" alt="Shanuka" class="avatar-icon"/>
-                <div class="nav-logo">SK</div>
+                <img src="logo.png" alt="SK Logo" class="nav-logo-img"/>
             </div>
             <ul>
-                <li><a href="#about-me">About</a></li>
-                <li><a href="#impact">Impact</a></li>
-                <li><a href="#career-growth">Career</a></li>
+                <li><a href="#" onclick="showSpaPage('impact-page'); return false;">Impact</a></li>
+                <li><a href="#" onclick="showSpaPage('career-page'); return false;">Career</a></li>
                 <li><a href="#insights">Insights</a></li>
                 <li><a href="#ai-projects">Projects</a></li>
                 <li><a href="#skills-dashboard">Skills</a></li>
+                <li><a href="#" onclick="showAboutPage(); return false;" class="about-nav-btn">About Me</a></li>
                 <li><a href="mailto:shanukanishankodithuwakku@gmail.com" class="cta-btn">Get in touch</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
+        <!-- HERO SECTION -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <img src="avatar.png" alt="Shanuka Kodithuwakku" class="hero-avatar"/>
-                
+
+                <!-- LEFT: Identity Card with avatar inside -->
+                <div class="hero-identity">
+                    <div class="hero-eyebrow">Business Systems & Finance Consultant</div>
+                    <div class="hero-identity-row">
+                        <img src="avatar.png" alt="Shanuka" class="hero-avatar"/>
+                        <h1 class="hero-name">Shanuka Nishan<br>Kodithuwakku</h1>
+                    </div>
+                </div>
+
+                <!-- RIGHT: Description + Metrics + CTAs -->
                 <div class="hero-text">
-                    <h1 class="hero-title">
-                <span class="hero-name">Shanuka Nishan Kodithuwakku</span>
-                <br/>
-                Business Systems & <span class="hero-highlight">Finance Consultant</span>
-            </h1>
                     <p class="hero-subtitle">ERP systems expert + AI-driven analyst. Built 3+ AI applications. Delivered 99.9% reconciliation accuracy across 15+ global markets. Strong in SAP S/4HANA, Power BI, financial modeling, and digital transformation.</p>
-                    
+
                     <div class="metrics">
                         <div class="metric">
                             <span class="metric-number">99.9%</span>
@@ -2211,523 +3708,13 @@
                         <a href="https://www.linkedin.com/in/shanuka-kodithuwakku/" target="_blank" class="btn-secondary">LinkedIn Profile</a>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- ABOUT ME SECTION -->
-    <section id="about-me" style="background: var(--white); padding: 5rem 2rem;">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">About Me</h2>
-                <p class="section-subtitle">Business Analytics & Operations Strategist | Visionary Planner</p>
-            </div>
-
-            <div class="about-intro">
-                <p class="about-tagline">"Bridging data-driven insights and strategic execution to build scalable, high-impact business systems."</p>
-            </div>
-
-            <div class="about-by-numbers">
-                <div class="number-card">
-                    <div class="number">3</div>
-                    <p>Global Ecosystems Navigated<br/><span>(Sri Lanka, UK, Canada)</span></p>
-                </div>
-                <div class="number-card">
-                    <div class="number">2</div>
-                    <p>Specialized Business Degrees<br/><span>(BA Hons & MBA)</span></p>
-                </div>
-                <div class="number-card">
-                    <div class="number">100%</div>
-                    <p>Focus on Scalable Execution<br/><span>& System Optimization</span></p>
-                </div>
-            </div>
-
-            <div class="about-story">
-                <h3>My Story: From Vision to Execution</h3>
-                <p>My journey began in Sri Lanka, an island rich in culture and fast-paced energy. From early on, I was fascinated by how complex systems work—how strategy, technology, and operations interlock to turn ambitious concepts into thriving organizations.</p>
-
-                <p>Driven to master these principles, I earned my BA (Hons) in International Business and Finance from the University of the West of Scotland. This foundation sharpened my understanding of global financial markets, cross-border corporate strategy, and quantitative decision-making.</p>
-
-                <p>Knowing that true impact requires a global lens, I relocated to Vancouver, Canada, to pursue my MBA in Business Analytics at the New York Institute of Technology (NYIT). Moving across oceans wasn't just a geographic shift; it was a deliberate step toward mastering the intersection of business intelligence, operational workflow design, and data analytics.</p>
-            </div>
-
-            <div class="about-approach">
-                <h3>My Signature Approach</h3>
-                <p>As an ENTJ Visionary Planner, I don't just analyze data—I build repeatable systems that drive measurable growth. Here is how I approach every challenge:</p>
-                
-                <div class="approach-steps">
-                    <div class="step">
-                        <div class="step-number">1</div>
-                        <div class="step-content">
-                            <h4>Diagnose</h4>
-                            <p>Map out operational bottlenecks, system inefficiencies, and market opportunities using rigorous data analytics and financial modeling.</p>
-                        </div>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">2</div>
-                        <div class="step-content">
-                            <h4>Design</h4>
-                            <p>Architect intuitive dashboard systems, automated workflows, and structured action plans tailored to strategic goals.</p>
-                        </div>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">3</div>
-                        <div class="step-content">
-                            <h4>Deliver</h4>
-                            <p>Execute with relentlessness and high energy, ensuring plans transition seamlessly into real-world operational success.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="about-beyond">
-                <h3>Beyond the Data</h3>
-                <p>When I'm not analyzing datasets or mapping out business strategies, I stay sharp by engaging with complex, disciplined pursuits:</p>
-                <ul class="interests-list">
-                    <li><strong>Global Football:</strong> Tracking international tactics and strategic play on the pitch.</li>
-                    <li><strong>Horology & Craftsmanship:</strong> Appreciating the precise engineering behind mechanical Swiss timepieces.</li>
-                    <li><strong>Emerging Ventures:</strong> Continuously exploring business models and strategic solutions for growing enterprises.</li>
-                </ul>
-                <p class="interests-note">I believe the attention to detail required in high-precision hobbies directly fuels my analytical rigor in business.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- MODAL PANEL FOR IMPACT, CAREER, LEARNING, ACHIEVEMENTS -->
-    <div id="modal-panel" class="modal-panel">
-        <div class="modal-close" onclick="closeModalPanel()">✕</div>
-        <div class="modal-content">
-
-    <!-- IMPACT DASHBOARD SECTION -->
-    <section id="impact" class="modal-section" style="background: linear-gradient(135deg, #1B6B5C 0%, #0F4D41 100%); color: white; padding: 5rem 2rem;">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title" style="color: white;">By The Numbers</h2>
-                <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">Quantified Impact Across 3 Global Ecosystems</p>
-            </div>
-
-            <div class="impact-grid">
-                <div class="impact-card">
-                    <div class="impact-icon">🌍</div>
-                    <h3>3 Markets Transformed</h3>
-                    <div class="impact-items">
-                        <div class="impact-item">🇱🇰 Sri Lanka: Built ERP baseline from scratch</div>
-                        <div class="impact-item">🇬🇧 UK: Scaled reporting across 15+ systems</div>
-                        <div class="impact-item">🇨🇦 Canada: Architecting next-gen analytics</div>
-                    </div>
-                </div>
-
-                <div class="impact-card">
-                    <div class="impact-icon">💰</div>
-                    <h3>$2M+ Value Generated</h3>
-                    <div class="impact-items">
-                        <div class="impact-item">📈 15% team efficiency gains (WNS)</div>
-                        <div class="impact-item">✅ 99.9% accuracy across 15+ regions (EY)</div>
-                        <div class="impact-item">⏱️ 6 months onboarding → 2 weeks (WNS)</div>
-                    </div>
-                </div>
-
-                <div class="impact-card">
-                    <div class="impact-icon">🤖</div>
-                    <h3>3 AI Apps Shipped</h3>
-                    <div class="impact-items">
-                        <div class="impact-item">🎯 Jarvis - Personal AI Assistant (Streamlit)</div>
-                        <div class="impact-item">📄 Clarion - Resume Optimizer (Cloud Run)</div>
-                        <div class="impact-item">📊 WorkDash - Job Tracking PWA (React)</div>
-                    </div>
-                </div>
-
-                <div class="impact-card">
-                    <div class="impact-icon">🎓</div>
-                    <h3>3 Continents, 2 Degrees</h3>
-                    <div class="impact-items">
-                        <div class="impact-item">🏆 BA (Hons) - International Business & Finance</div>
-                        <div class="impact-item">🎯 MBA - Business Analytics (NYIT, In Progress)</div>
-                        <div class="impact-item">📍 Building expertise across 3 time zones</div>
-                    </div>
-                </div>
-
-                <div class="impact-card">
-                    <div class="impact-icon">⚙️</div>
-                    <h3>Systems & Frameworks Built</h3>
-                    <div class="impact-items">
-                        <div class="impact-item">🔄 6 end-to-end workflow automations</div>
-                        <div class="impact-item">📊 15+ KPI dashboards across markets</div>
-                        <div class="impact-item">📋 Standardized SOP framework (team adoption)</div>
-                    </div>
-                </div>
-
-                <div class="impact-card">
-                    <div class="impact-icon">👥</div>
-                    <h3>Team Impact & Scaling</h3>
-                    <div class="impact-items">
-                        <div class="impact-item">🚀 Mentored teams in 4+ organizations</div>
-                        <div class="impact-item">📈 Recognized: Outstanding Performer Award (WNS)</div>
-                        <div class="impact-item">🤝 Zero compliance audit failures (18 months)</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CAREER GROWTH CHART -->
-    <section id="career-growth" class="modal-section" style="background: var(--white); padding: 5rem 2rem;">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Career Trajectory</h2>
-                <p class="section-subtitle">From Operations Associate to Enterprise Strategist</p>
-            </div>
-
-            <div class="career-timeline">
-                <div class="career-stage">
-                    <div class="stage-marker">1</div>
-                    <div class="stage-content">
-                        <h3>Associate - Accounting & Finance</h3>
-                        <p class="stage-company">Nations Lanka Finance PLC • 2019-2021</p>
-                        <div class="stage-skills">
-                            <span>SAP S/4HANA</span>
-                            <span>AP/AR Reconciliation</span>
-                            <span>Financial Reporting</span>
-                            <span>Compliance Audits</span>
-                        </div>
-                        <p class="stage-achievement">✅ Zero audit failures | Built core finance operations</p>
-                        <div class="stage-arrow">↓</div>
-                    </div>
-                </div>
-
-                <div class="career-stage">
-                    <div class="stage-marker">2</div>
-                    <div class="stage-content">
-                        <h3>Senior Associate - Operations & BA</h3>
-                        <p class="stage-company">WNS Global Services • 2022-2024</p>
-                        <div class="stage-skills">
-                            <span>Power BI Dashboards</span>
-                            <span>15+ Market Strategy</span>
-                            <span>Process Optimization</span>
-                            <span>Team Leadership</span>
-                        </div>
-                        <p class="stage-achievement">✅ 15% efficiency gains | Outstanding Performer Award | 15+ KPI dashboards</p>
-                        <div class="stage-arrow">↓</div>
-                    </div>
-                </div>
-
-                <div class="career-stage">
-                    <div class="stage-marker">3</div>
-                    <div class="stage-content">
-                        <h3>Business Systems & Finance Consultant</h3>
-                        <p class="stage-company">EY GDS • 2024-2025</p>
-                        <div class="stage-skills">
-                            <span>Enterprise Architecture</span>
-                            <span>Digital Transformation</span>
-                            <span>Global Stakeholder Mgmt</span>
-                            <span>Business Consulting</span>
-                        </div>
-                        <p class="stage-achievement">✅ 99.9% reconciliation accuracy | Process mapping for 15+ regions | Governance frameworks</p>
-                        <div class="stage-arrow">↓</div>
-                    </div>
-                </div>
-
-                <div class="career-stage">
-                    <div class="stage-marker">→</div>
-                    <div class="stage-content future">
-                        <h3>Next: Enterprise Analytics Leader</h3>
-                        <p class="stage-company">MBA in Business Analytics (NYIT) • 2025-Present</p>
-                        <div class="stage-skills">
-                            <span>AI/ML Integration</span>
-                            <span>Strategic Analytics</span>
-                            <span>Organizational Transformation</span>
-                            <span>Thought Leadership</span>
-                        </div>
-                        <p class="stage-achievement">🎯 Building frameworks | Shipping AI products | Architecting scalable systems</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="growth-metrics">
-                <div class="metric-box">
-                    <h4>Progression</h4>
-                    <p>Associate → Senior → Consultant<br/><span style="font-size: 0.9rem; color: var(--text-muted);">3 promotions in 5 years</span></p>
-                </div>
-                <div class="metric-box">
-                    <h4>Geographic Reach</h4>
-                    <p>3 Continents<br/><span style="font-size: 0.9rem; color: var(--text-muted);">Sri Lanka → UK → Canada</span></p>
-                </div>
-                <div class="metric-box">
-                    <h4>Skill Expansion</h4>
-                    <p>Finance → Operations → Strategy<br/><span style="font-size: 0.9rem; color: var(--text-muted);">+15 professional certifications</span></p>
-                </div>
-                <div class="metric-box">
-                    <h4>Impact Scale</h4>
-                    <p>$2M+ Value Generated<br/><span style="font-size: 0.9rem; color: var(--text-muted);">15+ markets served</span></p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PERSONALITY & PERSPECTIVE -->
-    <section id="personality" style="background: linear-gradient(135deg, #F8F9FA 0%, #FFFFFF 100%); padding: 5rem 2rem;">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">My Framework</h2>
-                <p class="section-subtitle">How I Think. How I Work. How I Deliver.</p>
-            </div>
-
-            <div class="framework-section">
-                <h3>The 3-D Approach: Diagnose → Design → Deliver</h3>
-                
-                <div class="framework-steps">
-                    <div class="framework-step">
-                        <div class="fw-number">1</div>
-                        <h4>DIAGNOSE</h4>
-                        <p>I don't jump to solutions. I <strong>map systems</strong>, <strong>identify bottlenecks</strong>, and <strong>quantify problems</strong> in business terms your stakeholders understand.</p>
-                        <p class="example">Example: At EY, I documented current-state workflows across investment operations, identified 12+ recurring system issues, and created traceability matrices linking requirements to business outcomes.</p>
-                    </div>
-
-                    <div class="framework-step">
-                        <div class="fw-number">2</div>
-                        <h4>DESIGN</h4>
-                        <p>I <strong>architect scalable solutions</strong>, not one-off fixes. I design systems that your team can own, maintain, and scale as your business grows.</p>
-                        <p class="example">Example: Built a unified Power BI system across 15+ markets at WNS, created standardized SOPs, designed 6 end-to-end workflow automations that reduced onboarding from 6 months to 2 weeks.</p>
-                    </div>
-
-                    <div class="framework-step">
-                        <div class="fw-number">3</div>
-                        <h4>DELIVER</h4>
-                        <p>I <strong>execute with relentlessness</strong> and high energy. I don't hand off requirements—I ensure seamless transitions from concept to operations, with your team trained to own it.</p>
-                        <p class="example">Example: At EY, delivered functional design discussions, validated solutions against business intent, coordinated stakeholder alignment, and documented governance frameworks—resulting in 99.9% accuracy.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="perspective-section">
-                <h3>Why This Matters</h3>
-                <div class="perspective-cards">
-                    <div class="perspective-card">
-                        <div class="persp-icon">💭</div>
-                        <h4>Most consultants stop at analysis.</h4>
-                        <p>I drive results. I'm not satisfied until the system is running, the team is trained, and metrics are improving.</p>
-                    </div>
-                    <div class="perspective-card">
-                        <div class="persp-icon">🔧</div>
-                        <h4>Most operators ignore strategy.</h4>
-                        <p>I bridge both worlds. I speak the language of CFOs AND engineers. I translate vision into architecture.</p>
-                    </div>
-                    <div class="perspective-card">
-                        <div class="persp-icon">🚀</div>
-                        <h4>Most teams execute in isolation.</h4>
-                        <p>I build systems. I think about downstream stakeholders, edge cases, and scalability from day one.</p>
-                    </div>
-                    <div class="perspective-card">
-                        <div class="persp-icon">🎯</div>
-                        <h4>Most people manage problems. </h4>
-                        <p>I architect solutions that prevent problems. My frameworks become your standard processes.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="personality-traits">
-                <h3>My Operating Style</h3>
-                <div class="traits-grid">
-                    <div class="trait">
-                        <strong>ENTJ Visionary Planner</strong>
-                        <p>I see patterns others miss. I design systems before building them.</p>
-                    </div>
-                    <div class="trait">
-                        <strong>Data-Driven Operator</strong>
-                        <p>Every decision backed by numbers. Every recommendation tied to business impact.</p>
-                    </div>
-                    <div class="trait">
-                        <strong>Cross-Functional Bridge</strong>
-                        <p>I translate business needs into technical specs. I clarify ambiguous requirements.</p>
-                    </div>
-                    <div class="trait">
-                        <strong>Relentless Executor</strong>
-                        <p>I don't stop at recommendations. I ensure delivery, adoption, and measurable outcomes.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- LEARNING & GROWTH JOURNEY -->
-    <section id="learning-journey" class="modal-section" style="background: var(--white); padding: 5rem 2rem;">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Learning in Motion</h2>
-                <p class="section-subtitle">Not a static resume. This is my career evolving in real-time.</p>
-            </div>
-
-            <div class="learning-grid">
-                <div class="learning-card current">
-                    <div class="learning-label">Currently</div>
-                    <h3>📚 MBA in Business Analytics</h3>
-                    <p class="learning-institution">New York Institute of Technology (NYIT), Vancouver</p>
-                    <p class="learning-description">Specialization in Business Analytics | Available for co-op terms</p>
-                    <div class="learning-focus">
-                        <strong>Focus Areas:</strong>
-                        <div>• Data-driven decision frameworks</div>
-                        <div>• Advanced statistical modeling</div>
-                        <div>• Business intelligence architecture</div>
-                        <div>• Strategic analytics for enterprise</div>
-                    </div>
-                    <p class="timeline">2025 - Present</p>
-                </div>
-
-                <div class="learning-card exploring">
-                    <div class="learning-label">Exploring</div>
-                    <h3>🤖 AI/LLM in Business</h3>
-                    <p class="learning-description">Investigating how AI integration transforms business processes and decision-making</p>
-                    <div class="learning-focus">
-                        <strong>Hands-On Work:</strong>
-                        <div>• Built Jarvis (Streamlit + Google Gemini)</div>
-                        <div>• Built Clarion (Claude API + Cloud Run)</div>
-                        <div>• Architecting scalable AI workflows</div>
-                        <div>• Exploring prompt engineering & RAG systems</div>
-                    </div>
-                </div>
-
-                <div class="learning-card building">
-                    <div class="learning-label">Building</div>
-                    <h3>💡 Frameworks & Systems</h3>
-                    <p class="learning-description">Documenting and open-sourcing methodologies from 5+ years of consulting</p>
-                    <div class="learning-focus">
-                        <strong>In Progress:</strong>
-                        <div>• 3-D Framework (Diagnose → Design → Deliver)</div>
-                        <div>• Enterprise analytics playbook</div>
-                        <div>• Digital transformation roadmap</div>
-                        <div>• Scalable BI architecture guide</div>
-                    </div>
-                </div>
-
-                <div class="learning-card contributing">
-                    <div class="learning-label">Contributing</div>
-                    <h3>🎤 Thought Leadership</h3>
-                    <p class="learning-description">Sharing insights on digital transformation and business analytics</p>
-                    <div class="learning-focus">
-                        <strong>Channels:</strong>
-                        <div>• LinkedIn insights on enterprise strategy</div>
-                        <div>• Case studies on AI adoption in finance</div>
-                        <div>• Articles on scaling BI across markets</div>
-                        <div>• Open-source BI/analytics projects</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="growth-philosophy">
-                <h3>Why Continuous Learning Matters</h3>
-                <p>Technology evolves. Markets shift. Customer expectations rise. If I'm not learning, I'm falling behind—and you're falling behind with me.</p>
-                <p>By investing in my own growth, I stay sharp, bring fresh perspectives, and can architect solutions that leverage the latest tools and frameworks. This isn't just personal development. It's a commitment to delivering forward-thinking solutions for my clients.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ACHIEVEMENT BADGES & CERTIFICATIONS -->
-    <section id="achievements" class="modal-section" style="background: linear-gradient(135deg, #1B6B5C 0%, #0F4D41 100%); color: white; padding: 5rem 2rem;">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title" style="color: white;">Credentials & Recognition</h2>
-                <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">Certifications, Awards, and Professional Achievements</p>
-            </div>
-
-            <div class="badges-grid">
-                <div class="badge-card">
-                    <div class="badge-icon">🏆</div>
-                    <h4>Outstanding Performer</h4>
-                    <p>WNS Global Services</p>
-                    <span class="badge-year">2023</span>
-                </div>
-
-                <div class="badge-card">
-                    <div class="badge-icon">🎓</div>
-                    <h4>PMI - Certified Agile</h4>
-                    <p>Project Management Institute</p>
-                    <span class="badge-year">2023</span>
-                </div>
-
-                <div class="badge-card">
-                    <div class="badge-icon">📊</div>
-                    <h4>Lean Six Sigma White Belt</h4>
-                    <p>AIGPE | CPD/CEU, PMI® PDUs, SHRM PDCs</p>
-                    <span class="badge-year">2023</span>
-                </div>
-
-                <div class="badge-card">
-                    <div class="badge-icon">💼</div>
-                    <h4>Associate Member, IOA</h4>
-                    <p>Institute of Analytics</p>
-                    <span class="badge-year">2023</span>
-                </div>
-
-                <div class="badge-card">
-                    <div class="badge-icon">🔧</div>
-                    <h4>EY Applied AI</h4>
-                    <p>Bronze Badge | AI Integration</p>
-                    <span class="badge-year">2024</span>
-                </div>
-
-                <div class="badge-card">
-                    <div class="badge-icon">🎯</div>
-                    <h4>Certified Predictive PM</h4>
-                    <p>Project Management Institute</p>
-                    <span class="badge-year">2023</span>
-                </div>
-
-                <div class="badge-card">
-                    <div class="badge-icon">📚</div>
-                    <h4>BA (Hons) Business & Finance</h4>
-                    <p>University of the West of Scotland</p>
-                    <span class="badge-year">2023</span>
-                </div>
-
-                <div class="badge-card">
-                    <div class="badge-icon">🎖️</div>
-                    <h4>Squad Extraordinaire</h4>
-                    <p>EY GDS | CSR Recognition</p>
-                    <span class="badge-year">2024</span>
-                </div>
-
-                <div class="badge-card">
-                    <div class="badge-icon">👨‍🎓</div>
-                    <h4>MBA in Analytics</h4>
-                    <p>NYIT Vancouver (In Progress)</p>
-                    <span class="badge-year">2025-2026</span>
-                </div>
-
-                <div class="badge-card">
-                    <div class="badge-icon">✨</div>
-                    <h4>OKI School Senior Prefect</h4>
-                    <p>Leadership Recognition</p>
-                    <span class="badge-year">2016</span>
-                </div>
-            </div>
-
-            <div class="competencies-summary">
-                <h3 style="color: white; margin-bottom: 2rem;">Core Competencies</h3>
-                <div class="competencies-showcase">
-                    <div class="comp-category">
-                        <h4>🔍 Analysis & Strategy</h4>
-                        <div class="comp-list">Business Analysis • Requirements Elicitation • FP&A • Process Optimization • Risk Analysis • Vendor Coordination</div>
-                    </div>
-                    <div class="comp-category">
-                        <h4>⚙️ Systems & Technology</h4>
-                        <div class="comp-list">SAP S/4HANA • Power BI • Advanced Excel • Business Intelligence • ERP Systems • Digital Transformation</div>
-                    </div>
-                    <div class="comp-category">
-                        <h4>📊 Operations & Execution</h4>
-                        <div class="comp-list">Agile/Scrum • Project Management • Team Leadership • Stakeholder Management • SOP Documentation • Change Management</div>
-                    </div>
-                    <div class="comp-category">
-                        <h4>🤖 Innovation & Growth</h4>
-                        <div class="comp-list">AI/LLM Integration • Financial Modeling • Data Analytics • Process Automation • Continuous Learning</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-        </div>
-    </div>
-    <!-- END MODAL PANEL -->
-
+        <!-- INSIGHTS SECTION -->
+    <section id="insights" style="background: linear-gradient(135deg, #F8F9FA 0%, #FFFFFF 100%); padding: 3.5rem 2rem;">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Insights & Leadership</h2>
@@ -2777,7 +3764,7 @@
         </div>
     </section>
 
-    <!-- AI & INNOVATION PROJECTS -->
+        <!-- AI & INNOVATION PROJECTS -->
     <section id="ai-projects">
         <div class="container">
             <div class="section-header">
@@ -2861,7 +3848,7 @@
         </div>
     </section>
 
-    <!-- SKILLS PROFICIENCY DASHBOARD -->
+        <!-- SKILLS PROFICIENCY DASHBOARD -->
     <section id="skills-dashboard" style="background: var(--light-bg);">
         <div class="container">
             <div class="section-header">
@@ -2974,7 +3961,7 @@
         </div>
     </section>
 
-    <!-- EXPERIENCE SECTION -->
+        <!-- EXPERIENCE SECTION -->
     <section id="experience">
         <div class="container">
             <div class="section-header">
@@ -3034,7 +4021,7 @@
         </div>
     </section>
 
-    <!-- PROJECTS SECTION -->
+        <!-- PROJECTS SECTION -->
     <section id="projects">
         <div class="container">
             <div class="section-header">
@@ -3082,7 +4069,7 @@
         </div>
     </section>
 
-    <!-- EDUCATION SECTION -->
+        <!-- EDUCATION SECTION -->
     <section id="education">
         <div class="container">
             <div class="section-header">
@@ -3117,7 +4104,7 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
+        <!-- FOOTER -->
     <footer id="footer">
         <div class="footer-content">
             <h2 class="footer-title">Let's Connect</h2>
@@ -3131,10 +4118,74 @@
             <div class="footer-divider"></div>
 
             <p class="footer-bottom">© 2026 <strong>Shanuka Nishan Kodithuwakku</strong> · Vancouver, BC</p>
+            <img src="logo.png" alt="SK Logo" class="footer-logo"/>
         </div>
     </footer>
 
-    <script>
+    </div><!-- END MAIN CONTENT -->
+
+        <script>
+        // ===== GENERIC SPA PAGE SYSTEM =====
+        function showSpaPage(pageId) {
+            const page = document.getElementById(pageId);
+            const mainContent = document.getElementById('main-content');
+            mainContent.style.display = 'none';
+            page.classList.add('active');
+            // Double RAF ensures display:block is painted before opacity transition
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    page.classList.add('visible');
+                });
+            });
+            window.scrollTo(0, 0);
+            setTimeout(() => { page.scrollTo(0, 0); }, 10);
+        }
+
+        function hideSpaPage(pageId) {
+            const page = document.getElementById(pageId);
+            const mainContent = document.getElementById('main-content');
+            page.classList.remove('visible');
+            setTimeout(() => {
+                page.classList.remove('active');
+                mainContent.style.display = 'block';
+                window.scrollTo(0, 0);
+            }, 350);
+        }
+
+        // ===== ABOUT PAGE SPA =====
+        function showAboutPage() {
+            const aboutPage = document.getElementById('about-page');
+            const mainContent = document.getElementById('main-content');
+            mainContent.style.display = 'none';
+            aboutPage.classList.add('active');
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    aboutPage.classList.add('visible');
+                });
+            });
+            window.scrollTo(0, 0);
+            setTimeout(() => { aboutPage.scrollTo(0, 0); }, 10);
+        }
+
+        function showMainPage() {
+            const aboutPage = document.getElementById('about-page');
+            const mainContent = document.getElementById('main-content');
+            aboutPage.classList.remove('visible');
+            setTimeout(() => {
+                aboutPage.classList.remove('active');
+                mainContent.style.display = 'block';
+            }, 350);
+        }
+
+        // ESC key closes any open SPA page
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                showMainPage();
+                hideSpaPage('impact-page');
+                hideSpaPage('career-page');
+            }
+        });
+
         // Smooth scroll for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -3149,87 +4200,31 @@
         // Add scroll animation for elements
         const observerOptions = {
             threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
+            rootMargin: '0px 0px -50px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
                     entry.target.style.animation = 'fadeInUp 0.6s ease-out forwards';
                     observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
 
+        // Only animate cards that are below the fold - never hide hero elements
         document.querySelectorAll('.project-card, .education-item, .skill-category').forEach(el => {
-            el.style.opacity = '0';
+            const rect = el.getBoundingClientRect();
+            if (rect.top > window.innerHeight) {
+                el.style.opacity = '0';
+            }
             observer.observe(el);
         });
 
         // Modal Panel Functions
-        function openModalPanel(sectionId) {
-            const modal = document.getElementById('modal-panel');
-            const backdrop = document.getElementById('modal-backdrop');
-            const sections = document.querySelectorAll('.modal-section');
-
-            // Hide all sections
-            sections.forEach(section => section.classList.remove('active'));
-
-            // Show selected section
-            const targetSection = document.getElementById(sectionId);
-            if (targetSection) {
-                targetSection.classList.add('active');
-            }
-
-            // Open modal
-            modal.classList.add('open');
-            backdrop.classList.add('open');
-            document.body.style.overflow = 'hidden';
-
-            // Scroll to top of modal
-            modal.scrollTop = 0;
-        }
-
-        function closeModalPanel() {
-            const modal = document.getElementById('modal-panel');
-            const backdrop = document.getElementById('modal-backdrop');
-
-            modal.classList.remove('open');
-            backdrop.classList.remove('open');
-            document.body.style.overflow = 'auto';
-        }
-
-        // Close modal when clicking backdrop
-        document.getElementById('modal-backdrop').addEventListener('click', closeModalPanel);
-
-        // Update navigation link clicks
-        document.querySelectorAll('a[href="#impact"]').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                openModalPanel('impact');
-            });
-        });
-
-        document.querySelectorAll('a[href="#career-growth"]').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                openModalPanel('career-growth');
-            });
-        });
-
-        document.querySelectorAll('a[href="#learning-journey"]').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                openModalPanel('learning-journey');
-            });
-        });
-
-        document.querySelectorAll('a[href="#achievements"]').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                openModalPanel('achievements');
-            });
-        });
+        function openModalPanel(sectionId) { /* retired - now using SPA pages */ }
+        function closeModalPanel() { /* retired - now using SPA pages */ }
 
         // Close modal with Escape key
         document.addEventListener('keydown', (e) => {
